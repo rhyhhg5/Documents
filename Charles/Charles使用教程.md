@@ -45,7 +45,7 @@
 ### 1. 打开**Charles**软件。
 
 
-	首次打开会有提示，这里是询问是否允许`Charles`自动配置你的网络，这里选择`Grant Privileges`。
+首次打开会有提示，这里是询问是否允许`Charles`自动配置你的网络，这里选择`Grant Privileges`。
 
 
 ![](file:///Users/yingxin/Desktop/QQ20151227-2@2x.png)
