@@ -5,7 +5,7 @@
 ##### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
 
 		以下是针对MRC(手动内存释放)模式:
-/Users/jiyingxin/Downloads/Calculator		与alloc语义相反的方法是dealloc，与retain语义相反的方法是release。
+		与alloc语义相反的方法是dealloc，与retain语义相反的方法是release。
 		alloc是为对象在内存中开辟空间，而dealloc则是对象销毁时释放空间。
 		retain方法是对象开辟空间以后使对象的引用计数器加1，而release是对象的引用计数器减1。
 		需要与alloc配对的方法是release，因为对象创建以后，对象的引用计数器自动加1，
@@ -173,7 +173,8 @@ self.age = newAge;
 	（补充：默认属性，将生成不带额外参数的getter和setter方法（setter方法只有一个参数））
 	2.readonly 是只读特性，只会生成getter方法，不会生成setter方法;不希望属性在类外改变
 	3.assign 是赋值特性，setter方法将传入参数赋值给实例变量；仅设置变量时；
-	4.retain(MRC)/strong(ARC) 表示持有特性，setter方法将传入参数先保留，再赋值，传入参数的retaincount会+1;
+	4.retain(MRC)/strong(ARC) 表示持有特性，setter方法将传入参数先保留，
+	  再赋值，传入参数的retaincount会+1;
 	5.copy 表示拷贝特性，setter方法将传入对象复制一份；需要完全一份新的变量时。
 	6.nonatomic 非原子操作，决定编译器生成的setter和getter方法是否是原子操作。
 		- atomic表示多线程安全，需要对方法加锁，保证同一时间只有一个线程访问属性，
@@ -215,7 +216,8 @@ self.age = newAge;
 	typedef unsigned int NSUInteger;
 	#endif
 	
-	可以看到，在64位操作系统上，NSInteger是 C语言的long类型。 在32位操作系统上，则是int类型。
+	可以看到，在64位操作系统上，NSInteger是 C语言的long类型。 
+	在32位操作系统上，则是int类型。
 
 ##### 15. id声明的对象有什么特性？
 
@@ -228,14 +230,15 @@ self.age = newAge;
 	现在我们使用苹果推荐使用的“instancetype”类型代替id类型作为返回值
 	- (instancetype)initWithName:(NSString *)name;
 
-	instancetype和id的区别在于， id可以声明对象 也可以作为返回值，instancetype只能作为返回值。
+	instancetype和id的区别在于， id可以声明对象 也可以作为返回值，
+	instancetype只能作为返回值。
 
 ##### 16. OC如何对内存管理的，说说你的看法和解决方法。
 
 	Objective-C的内存管理主要有三种方式ARC(自动内存计数)、手动内存计数、内存池。
 	　　1. 自动内存计数ARC：由Xcode自动在App编译阶段，在代码中添加内存管理代码。
 	　　2. 手动内存计数MRC：遵循内存谁申请，谁添加。谁释放的原则。
-	　　3. 内存释放池Release Pool：把需要释放的内存统一放在一个池子中，当池子被抽干后(drain)，
+	　　3. 内存释放池Release Pool：把需要释放的内存统一放在一个池子中，当池子被抽干后(drain)
 	　　	池子中所有的内存空间也被自动释放掉。 内存池的释放操作分为自动和手动。
 	　　	 自动释放受runloop机制影响。
 
@@ -280,7 +283,7 @@ self.age = newAge;
 	正常情况下不可以添加属性。但是实际应用中可以通过runtime机制添加属性。
 	类别主要有3个作用：
 	- 将类的实现分散到多个不同文件或多个不同框架中。降低耦合性。
-	- 重写私有方法。
+	- 重写主类方法
 	- 向类中添加协议，属性，方法。
 	
 	继承主要作用：
@@ -288,33 +291,237 @@ self.age = newAge;
 	- 在父类基础上增加属性，方法，协议
 	
 	区别：继承使用时，需要使用子类。 Category使用时只需要引入头文件。
-	
-	
+
+##### 22. 我们说的OC是动态运行时语言是什么意思？
+
+	`编译时`等价于`编码时`, `编码时`就是程序员写的代码的样子. 程序员为一个类编写代码, 
+	便可以为一个类添加 “成员变量(实例变量)” . 程序员也可以在一个类中写一些函数, 被称作“方法”.
+	 运行前编译, 编译器会把程序员写的代码编译成可执行文件, 里面便有之前写的类的信息, 
+	 包括`实例变量`和`方法`, 这些信息并不能组成一个实际的数据类型. 
+	 程序运行后, 会将这些信息拼凑成一个结构体, 这个结构体便是一个数据类型. 
+	 同时, 在运行期间, 数据类型可以改变, 表现为:
 		
+	1. 可以动态增添方法
+	2. 可以动态增添实例变量
+	等等..做一些运行时数据类型修改.
+		
+	一旦做了运行时修改, 就会使得这个结构体与程序员当初编写的类不一样.
 
+##### 23. 为什么很多内置类如UITableView的delegate属性都是assign而不是retain ？
 
+	如果是retain会引起循环引用。
+	所有的引用计数系统，都存在循环引用的问题。例如下面的引用关系：
+	对象a创建并引用了对象b,对象b创建并引用了对象c,对象c创建并引用了对象b.
+	这时候b和c的引用计数分别是2和1。当a不再使用b，调用release释放对b的所有权，因为c还引用了b。
+	所以b的引用计数为1，b不会被释放。b不释放，c的引用计数就是1，c也不会被释放。
+	从此，b和c永远留在内存中。
+	
+	这种情况，必须打断循环引用，通过其他规则来维护引用关系。
+	比如，我们常见的delegate往往是assign方式的属性而不是retain方式的属性，
+	赋值不会增加引用计数，就是为了防止delegation两端产生不必要的循环引用。
+	如果一个UITableViewController对象a通过retain获取了UITableView对象b的所有权，
+	这个UITableView对象b的delegate又是a，如果这个delegate是retain方式的，
+	那基本上就没有机会释放这两个对象了。
 
+##### 24. 什么时候用delegate，什么时候用Notification？
 
+	Delegate(委托模式):
+	1对1的反向消息通知功能。
+	
+	Notification(通知模式):
+	只想要把消息发送出去，告知某些状态的变化。但是并不关心谁想要知道这个。
+
+##### 25. 什么是KVC和KVO？
+
+	KVC（Key-Value-Coding）:键 - 值编码是一种通过字符串间接访问对象的方式。
+	而不是通过调用setter方法或通过实例变量访问的机制。很多情况下可以简化程序代码。
+	例如：
+	
+	@interface MeiLing:NSObject
+	
+	@property NSString *name;
+	@property UILabel *label;
+	
+	@end
+	
+	对于name的赋值 可以使用 meiLing.name = @"笑玲"; 这是点语法。调用的是setName方法。
+	KVC的写法是  [meiLing setValue:@"梦玲" forKey:@"name"];  通过name字符串赋值。
+	
+	当然也可以跨层赋值，例如为label的text属性赋值
+	点语法： meiLing.label.text = @"笑玲";
+	KVC： [meiLing setValue:@"梦玲" forKeyPath:@"label.text"];
+
+	KVO:键值观察机制，他提供了观察某一属性变化的方法，极大的简化了代码。
+		KVO 只能被 KVC触发， 包括使用setValue：forKey：方法 和 点语法。
+	通过下方方法为属性添加KVO观察
+	- (void)addObserver:(NSObject *)observer 
+					forKeyPath:(NSString *)keyPath 
+					options:(NSKeyValueObservingOptions)options 
+					context:(nullable void *)context;
+	当被观察的属性发生变化时，会自动触发下方方法
+	- (void)observeValueForKeyPath:(NSString *)keyPath 
+							 ofObject:(id)object 
+								 change:(NSDictionary *)change 
+								context:(void *)context
+
+##### 26. 设计模式是什么？你知道哪些设计模式，并简要叙述。
+
+	- 单例模式：通过static关键词，声明全局变量。在整个进程运行期间只会被赋值一次。
+	- 观察者模式：KVO是典型的通知模式，观察某个属性的状态，状态发生变化时通知观察者。
+	- 委托模式：代理+协议的组合。实现1对1的反相传值操作。
+	- 工厂模式：通过一个类方法，批量的根据已有模板生产对象。
+	- MVC模式：Model View Control， 把模型 视图 控制器 层进行解耦合编写。
+	- MVVM模式：Model View ViewModel 把 模型 视图 业务逻辑 层进行解耦合编写。
+
+##### 27. 描述一下iOS SDK中如何实现MVC的开发模式。
+
+	MVC即  Model-View-Control 
+	Model称为模型层，主要负责数据结构，业务逻辑相关的操作
+	View 称为视图层，主要负责视图的展示
+	Control 称为控制层，主要负责把View和Model层结合起来的操作。例如点击视图上的某个按钮
+	要执行Model层中的某个业务逻辑。 或者把Model中的数据展现在视图上。
+
+##### 28. ViewController的didReceiveMemoryWarning是在什么时候调用的？默认的操作是什么？
+
+		当系统内存不足时，首先UIViewController的didReceiveMemoryWarining方法会被调用。
+		默认操作如果当前控制器不是window的根视图控制器，会自动将self.view释放。  
+
+##### 29. delegate和Block的区别？
+
+	delegate：
+	- 需要定义协议方法并且实现协议方法，会使代码结构变复杂
+	- 效率没有block高
+	
+	block：
+	- 代码结构更加紧凑，不需要额外定义方法。
+	- 需要注意防止循环引用，使用__weak 关键词修饰
+	- 当需要在块中修改外部变量时，需要对外部变量使用__block 关键词修饰
+
+##### 30. frame和bounds有什么不同？
+
+	frame指的是：该view在父view坐标系统中的位置和大小。（参照点是父亲的坐标系统）
+	bounds指的是：该view在本身坐标系统中 的位置和大小。（参照点是本身坐标系统）
+
+##### 31.ViewController生命周期
+
+	按照执行顺序排列
+ 	- initWithCoder：通过nib文件初始化时触发
+	- awakeFromNib：nib文件被加载的时候，会发送一个awakeFromNib的消息到nib文件中的每个对象
+	- loadView：开始加载视图控制器自带的view
+	- viewDidLoad：视图控制器的view被加载完成
+	- viewWillAppear：视图控制器的view将要显示在window上
+	- updateViewConstraints：视图控制器的view开始更新AutoLayout约束
+	- viewWillLayoutSubviews：视图控制器的view将要更新内容视图的位置
+	- viewDidLayoutSubviews：视图控制器的view已经更新视图的位置
+	- viewDidAppear：视图控制器的view已经展现到window上
+	- viewWillDisappear：视图控制器的view将要从window上消失
+	- viewDidDisappear：视图控制器的view已经从window上消失
+
+##### 32. 如何将产品进行多语言发布，开发？
+
+	国际化操作
+	在Xcode中，Project里，找到Localization，点击+号，添加想要支持的语言
+	通过新建Strings文件，把文件进行国际化处理。 通过键值对的形式，同一个key在不同的国际化
+	文件中，对应不同的值。
+	通过 NSLocalizedStringFromTable 等方法，通过key来自动根据iOS设备的当前语言，
+	显示不同的字符串。
+
+##### 33. OC中是如何实现线程同步的？
+	@synchronized: 添加同步锁
+	NSLock：加锁
+	NSCondition：加条件锁
+	dispatch_async(dispatch_get_main_queue(), ^{}); :异步主线程
+	NSOperationQueue：添加线程依赖
+	NSOperationQueue：设置最大并发数为1
+
+##### 34. UDP和TCP的区别是什么？
+	1.基于连接与无连接；
+	2.对系统资源的要求（TCP较多，UDP少）；
+	3.UDP程序结构较简单；
+	4.流模式与数据报模式 ；
+	5.TCP保证数据正确性，UDP可能丢包，TCP保证数据顺序，UDP不保证
+
+##### 35. TCP/IP建立连接的过程？
+
+	- 在TCP/IP 协议中，TCP协议提供可靠的连接服务，采用三次握手建立连接；
+	- 第一次握手：建立连接时，客户端发送连接请求到服务器，并进入SYN_SEND状态，等待服务器确认；
+	- 第二次握手：服务器收到客户端连接请求，向客户端发送允许连接应答，
+	  此时服务器进入SYN_RECV状态；
+	- 第三次握手：客户端收到服务器的允许连接应答，向服务器发送确认，客户端和服务器进入通信状态，
+	  完成三次握手。
+	 （所谓的三次握手，就是要有三次连接信息的发送、接收过程。
+	   TCP连的建立需要进行三次连接信息的发送、接收。）
+
+##### 36. 编程中，保存数据有哪几种方式？
+
+	- 数据：Sqlite。 操作方式分为原生的sqlite3，FMDB，Coredata
+	- 归档：Archive。 自定义类型需要注意遵循NSCoding协议
+	- Plist：就是数组或字典，写入文件后的表现形式。
+	- NSUserDefault：本质上就是Plist。
+	- 写文件
+	- 上传到服务器
+
+##### 37. 介绍版本控制中Git与SVN。
+
+	1、Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+		主要区别于SVN工具的功能是 分支功能比SVN强大。 （常用）
+	2、SVN是Subversion的简称，是一个开放源代码的版本控制系统，它采用了分支管理系统，
+	   它的设计目标就是取代CVS。
+
+##### 38. OC中创建线程的方法是什么？如果在主线程中执行代码，方法是什么？如果想延时执行代码，方法又是什么？
+
+	创建线程的方法
+	- [NSThread detachNewThreadSelector:nil toTarget:nil withObject:nil]
+	- [self performSelectorInBackground:nil withObject:nil];
+	- [[NSThread alloc] initWithTarget:nil selector:nil object:nil];
+	- dispatch_async(dispatch_get_global_queue(0, 0), ^{});
+	- [[NSOperationQueue new] addOperation:nil];
+
+	主线程中执行代码的方法
+	- [self performSelectorOnMainThread:nil withObject:nil waitUntilDone:YES]
+	- dispatch_async(dispatch_get_main_queue(), ^{});
+	- [[NSOperationQueue mainQueue] addOperation:nil];
+
+	延迟执行代码
+	sleep(2)  睡两秒钟
+	NSTimer启动定时器
+
+##### 39. iOS中有哪些多线程方案？
+
+	常用的有三种: NSThread NSOperationQueue GCD。
+		1、NSThread 是这三种范式里面相对轻量级的，但也是使用起来最负责的，
+		你需要自己管理thread的生命周期，线程之间的同步。线程共享同一应用程序的部分内存空间，
+		它们拥有对数据相同的访问权限。你得协调多个线程对同一数据的访问，
+		一般做法是在访问之前加锁，这会导致一定的性能开销。
+		2、NSOperationQueue 以面向对象的方式封装了用户需要执行的操作，
+		我们只要聚焦于我们需要做的事情，而不必太操心线程的管理，同步等事情，
+		因为NSOperation已经为我们封装了这些事情。 
+		NSOperation 是一个抽象基类，我们必须使用它的子类。
+		3、 GCD: iOS4 才开始支持，它提供了一些新的特性，以及运行库来支持多核并行编程，
+		它的关注点更高：如何在多个cpu上提升效率。
+		
+		总结：
+		- NSThread是早期的多线程解决方案，实际上是把C语言的PThread线程管理代码封装成OC代码。
+		- GCD是取代NSThread的多线程技术，C语法+block。功能强大。
+		- NSOperationQueue是把GCD封装为OC语法，额外比GCD增加了几项新功能。
+			* 最大线程并发数
+			* 取消队列中的任务
+			* 暂停队列中的任务
+			* 可以调整队列中的任务执行顺序，通过优先级
+			* 线程依赖
+			* NSOperationQueue支持KVO。 这就意味着你可以观察任务的状态属性。
+		但是NSOperationQueue的执行效率没有GCD高，所以一半情况下，我们使用GCD来完成多线程操作。
+
+##### 40. 线程与进程的区别和联系?
+
+	1.什么是进程 
+	进程是指在系统中正在运行的一个应用程序
+	每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内
+	
+	2.什么是线程
+	1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）
+	线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。	
 
 [^PointSyntax]: 点语法: "self.属性 = obj" 调用属性的setter方法。"self.属性" 调用属性的getter方法区别在于是否有等号
 
 [^MRC]: MRC:手动内存释放。遵循谁申请谁释放的原则，需要手动的处理内存计数的增加和修改。从12年开始，逐步被ARC(自动内存释放)模式取代。
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
