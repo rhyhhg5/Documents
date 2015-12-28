@@ -5,7 +5,7 @@
 ##### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
 
 		以下是针对MRC(手动内存释放)模式:
-		与alloc语义相反的方法是dealloc，与retain语义相反的方法是release。
+/Users/jiyingxin/Downloads/Calculator		与alloc语义相反的方法是dealloc，与retain语义相反的方法是release。
 		alloc是为对象在内存中开辟空间，而dealloc则是对象销毁时释放空间。
 		retain方法是对象开辟空间以后使对象的引用计数器加1，而release是对象的引用计数器减1。
 		需要与alloc配对的方法是release，因为对象创建以后，对象的引用计数器自动加1，
@@ -25,9 +25,9 @@
 		//根据@property关键词，系统自动生成setter方法。
 		- (void)setName:(NSString *)name{
 			//根据strong关键词
-			[name retain];
+			[name retain];	//内存计数+1
 			[_name release];	//把之前指针指向的内容内存计数-1
-			_name = name; //指向新内容，内存计数+1
+			_name = name; //指向新内容
 		}
 		
 		_name = @“object”; 只是单纯的把‘_name’指针指向‘@"object"’字符串对象所在的地址，
@@ -59,7 +59,7 @@ self.age = newAge;
 	   [person release];  -1   = 0
 	   
 	   内存计数技术规律
-	   alloc，new   内存计数 = 1
+	   alloc，new，copy   内存计数 = 1
 	   retain +1
 	   release -1
 	   UIView  addSubview  +1
@@ -141,7 +141,7 @@ self.age = newAge;
 	不会影响到其他类与原有类的关系。
 
 
-##### 10. #import和#include有什么区别？@class呢？#import<>和#import” ”有什么区别？
+##### 10. #import和#include有什么区别？@class呢？#import<>和#import""有什么区别？
 
 	#import是Objective-C导入头文件的关键字，#include是C/C++导入头文件的关键字,
 	使用#import头文件会自动只导入一次，不会重复导入，相当于#include和#pragma once;
@@ -173,26 +173,26 @@ self.age = newAge;
 	（补充：默认属性，将生成不带额外参数的getter和setter方法（setter方法只有一个参数））
 	2.readonly 是只读特性，只会生成getter方法，不会生成setter方法;不希望属性在类外改变
 	3.assign 是赋值特性，setter方法将传入参数赋值给实例变量；仅设置变量时；
-	4.retain 表示持有特性，setter方法将传入参数先保留，再赋值，传入参数的retaincount会+1;
+	4.retain(MRC)/strong(ARC) 表示持有特性，setter方法将传入参数先保留，再赋值，传入参数的retaincount会+1;
 	5.copy 表示拷贝特性，setter方法将传入对象复制一份；需要完全一份新的变量时。
 	6.nonatomic 非原子操作，决定编译器生成的setter和getter方法是否是原子操作。
 		- atomic表示多线程安全，需要对方法加锁，保证同一时间只有一个线程访问属性，
 		  因为有等待过程，所以影响执行效率
 		- 一般使用nonatomic。不加锁。效率会更高。但是线程不安全。
 
-##### 12. 写一个setter方法用于完成@property(nonatomic, retain)NSString *name, 写一个setter方法用于完成@property(nonatomic, copy)NSString *name
+##### 12. 写一个setter方法用于完成@property(nonatomic, strong)NSString *name, 写一个setter方法用于完成@property(nonatomic, copy)NSString *name
 
-	- (void) setName:(NSString*) str //retain
+	- (void)setName:(NSString*)str //retain
 	　{
 	　　[str retain];
-	　　[name release];
-	　　name = str;
+	　　[_name release];
+	　　_name = str;
 	　}
 	- (void)setName:(NSString *)str //copy
 	　{
 	　　id t = [str copy];
-	　　[name release];
-	　　name = t;
+	　　[_name release];
+	　　_name = t;
 	　}
 
 ##### 13. 对于语句NSString *obj = [[NSData alloc] init]; obj在编译时和运行时分别是什么类型的对象？
@@ -235,8 +235,9 @@ self.age = newAge;
 	Objective-C的内存管理主要有三种方式ARC(自动内存计数)、手动内存计数、内存池。
 	　　1. 自动内存计数ARC：由Xcode自动在App编译阶段，在代码中添加内存管理代码。
 	　　2. 手动内存计数MRC：遵循内存谁申请，谁添加。谁释放的原则。
-	　　3. 内存池AutoRelease Pool：把需要释放的内存统一放在一个池子中，当池子被抽干后			(drain)，池子中所有的内存空间也被自动释放掉。 内存池的释放操作分为自动和手动。
-	　　	自动释放受runloop机制影响。
+	　　3. 内存释放池Release Pool：把需要释放的内存统一放在一个池子中，当池子被抽干后(drain)，
+	　　	池子中所有的内存空间也被自动释放掉。 内存池的释放操作分为自动和手动。
+	　　	 自动释放受runloop机制影响。
 
 ##### 17. 你对@interface中的成员变量和@property声明的属性的理解。
 
@@ -268,7 +269,10 @@ self.age = newAge;
 	对象本身资源还是只有一份。
 	那如果我们对A_copy执行了修改操作,那么发现A引用的对象同样被修改，
 	这其实违背了我们复制拷贝的一个思想。
-	深复制就好理解了,内存中存在了两份独立对象本身。 	用网上一哥们通俗的话将就是： 	浅拷贝好比你和你的影子，你完蛋，你的影子也完蛋 	深拷贝好比你和你的克隆人，你完蛋，你的克隆人还活着。
+	深复制就好理解了,内存中存在了两份独立对象本身。 	
+	用网上一哥们通俗的话将就是： 	
+	浅拷贝好比你和你的影子，你完蛋，你的影子也完蛋 	
+	深拷贝好比你和你的克隆人，你完蛋，你的克隆人还活着。
 
 ##### 21. 类别的作用？继承和类别在实现中有何区别？
 
@@ -282,7 +286,8 @@ self.age = newAge;
 	继承主要作用：
 	- 重写父类方法
 	- 在父类基础上增加属性，方法，协议
-	- 
+	
+	区别：继承使用时，需要使用子类。 Category使用时只需要引入头文件。
 	
 	
 		
