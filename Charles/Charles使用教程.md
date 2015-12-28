@@ -58,7 +58,9 @@
 ![](http://7xpk73.com1.z0.glb.clouddn.com/QQ20151227.png)
 
 
-2. 确保iOS设备`iphone或ipad等`与运行**Charles**的Mac电脑处于同一个wifi中
+2. 确保iOS设备`iphone或ipad等`与运行**Charles**的Mac电脑处于同一个wifi中。
+
+	`没有wifi？不要怕。`[看这里](#shareNet)
 
 
 3. 查看Mac电脑的IP地址，`系统偏好设置`->`网络`就可以查看到了。 如图，我的电脑ip地址是`192.168.0.2`
@@ -88,11 +90,11 @@
 
 ## 实战篇
 
-1. 首先我们来看一下`Charles`的界面
+首先我们来看一下`Charles`的界面
 
 ![](http://7xpk73.com1.z0.glb.clouddn.com/QQ20151227-16%402x.png)
 
-2.  接下来我们试着抓取`网易新闻`App的请求。
+接下来我们试着抓取`网易新闻`App的请求。
 
  ![](http://7xpk73.com1.z0.glb.clouddn.com/QQ20151227-18%402x.png)
 
@@ -119,6 +121,11 @@
 ![](http://7xpk73.com1.z0.glb.clouddn.com/QQ20151227-17%402x.png)
 
 
+##  <a name="shareNet"></a>把Mac电脑的网络分享给手机
+
+Mac电脑通过网线上网，我们可以把电脑当做路由器使用。具体做法如下：
+
+`系统偏好设置`->`共享`->`互联网共享`
 
 
 
