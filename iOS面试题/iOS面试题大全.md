@@ -560,6 +560,119 @@ self.age = newAge;
 	1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）
 	线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
 
+#### 41. 不手动指定autoreleasepool的前提下，一个autorealese对象在什么时刻释放？（比如在一个vc的viewDidLoad中创建）
+
+	分两种情况：手动干预释放时机、系统自动去释放。
+	
+	手动干预释放时机--指定autoreleasepool 就是所谓的：当前作用域大括号结束时释放。
+	系统自动去释放--不手动指定autoreleasepool
+	Autorelease对象会在当前的 runloop 迭代结束时释放。
+	如果在一个vc的viewDidLoad中创建一个 Autorelease对象，
+	那么该对象会在 viewDidAppear 方法执行前就被销毁了。
+
+#### 42. 使用block时什么情况会发生引用循环，如何解决？
+
+	一个对象中强引用了block，在block中又使用了该对象，就会发射循环引用。
+	解决方法是将该对象使用__weak或者__block修饰符修饰之后再在block中使用。
+	id weak weakSelf = self; 
+	或者 
+	__weak __typeof(&*self)weakSelf = self该方法可以设置为宏，便于使用
+	
+	例如
+	#define WS(weakSelf)  __weak __typeof(&*self)weakSelf = self;
+	
+    WS(weakSelf)
+    [self.tableView addHeaderWithCallback:^{
+        [weakself requestMemberList];
+    }];
+	
+	如果要在block内部改变外部变量的值,则需要如下定义
+	id __block weakSelf = self;
+
+
+#### 43. 以下代码运行结果如何？
+
+	-(void)viewDidLoad  
+	{  
+	    [super viewDidLoad];  
+	    NSLog(@"1"); 
+	    dispatch_sync(dispatch_get_main_queue(), ^{  
+	        NSLog(@"2");  
+	    });  
+	    NSLog(@"3");  
+	}  
+	
+答:
+
+	发生主线程锁死。程序出现假死状态.
+
+#### 44. 若一个类有实例变量 NSString *_foo ，调用setValue:forKey:时，可以以foo还是 _foo 作为key？
+
+	都可以。
+
+#### 45. 什么情况使用 weak 关键字，相比 assign 有什么不同？
+
+	什么情况使用 weak 关键字？
+	
+	1）在ARC中,在有可能出现循环引用的时候,往往要通过让其中一端使用weak来解决,
+	比如:delegate代理属性
+	
+	2）自身已经对它进行一次强引用,没有必要再强引用一次,此时也会使用weak,
+	自定义IBOutlet控件属性一般也使用weak；当然，也可以使用strong。
+	
+	不同点：
+	
+	1）weak 此特质表明该属性定义了一种“非拥有关系” (nonowning relationship)。
+	为这种属性设置新值时，设置方法既不保留新值，也不释放旧值。此特质同assign类似， 
+	然而在属性所指的对象遭到摧毁时，属性值也会清空(nil out)。 
+	而 assign 的“设置方法”只会执行针对“纯量类型” 
+	(scalar type，例如 CGFloat 或 NSlnteger 等)的简单赋值操作。
+	
+	2）assigin 可以用非OC对象,而weak必须用于OC对象
+
+#### 46.怎么用 copy 关键字？
+
+	1) 用@property声明 NSString、NSArray、NSDictionary 经常使用copy关键字，
+	是因为他们有对应的可变类型：NSMutableString、NSMutableArray、NSMutableDictionary，
+	他们之间可能进行赋值操作，为确保对象中的字符串值不会无意间变动，应该在设置新属性值时拷贝一份。
+	不过通常为了节省系统资源,选择使用strong代替copy
+	
+	2）block也经常使用copy关键字, 不过使用strong也无伤大雅.
+
+#### 47. @protocol 和 category 中如何使用 @property
+
+	1）在protocol中使用property只会生成setter和getter方法声明,我们使用属性的目的,
+	是希望遵守我协议的对象能实现该属性
+	
+	2）category 使用 @property 也是只会生成setter和getter方法的声明,
+	如果我们真的需要给category增加属性的实现,需要借助于运行时的两个runtime函数：
+	
+	①objc_setAssociatedObject
+	②objc_getAssociatedObject
+
+#### 48. @synthesize和@dynamic分别有什么作用？
+
+	1）@property有两个对应的词，一个是@synthesize，一个是@dynamic。
+	如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;
+	
+	2）@synthesize的语义是如果你没有手动实现setter方法和getter方法，
+	那么编译器会自动为你加上这两个方法。
+	
+	3）@dynamic告诉编译器：属性的setter与getter方法由用户自己实现，不自动生成。（
+	当然对于readonly的属性只需提供getter即可）。假如一个属性被声明为@dynamic var，
+	然后你没有提供@setter方法和@getter方法，编译的时候没问题，
+	但是当程序运行到instance.var = someVar，由于缺setter方法会导致程序崩溃；
+	或者当运行到 someVar = var时，由于缺getter方法同样会导致崩溃。
+	编译时没问题，运行时才执行相应的方法，这就是所谓的动态绑定。
+
+#### 49. ARC下，不显式指定任何属性关键字时，默认的关键字都有哪些？
+
+	对应基本数据类型默认关键字是
+	atomic,readwrite,assign
+	
+	对于普通的OC对象
+	atomic,readwrite,strong
+
 
 
 [^PointSyntax]: 点语法: "self.属性 = obj" 调用属性的setter方法。"self.属性" 调用属性的getter方法区别在于是否有等号
