@@ -1,0 +1,671 @@
+
+	    <html>
+	      <head>
+				  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	        <title>iOS面试题大全</title>
+					
+					<link href="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/style/github-bf51422f4bb36427d391e4b75a1daa083c2d840e.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/style/github2-d731afd4f624c99a4b19ad69f3083cd6d02b81d5.css" media="all" rel="stylesheet" type="text/css"/>
+					<link href="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/css/zTreeStyle/zTreeStyle.css" media="all" rel="stylesheet" type="text/css"/>
+			
+				  <style>
+					pre {
+					    counter-reset: line-numbering;
+					    border: solid 1px #d9d9d9;
+					    border-radius: 0;
+					    background: #fff;
+					    padding: 0;
+					    line-height: 23px;
+					    margin-bottom: 30px;
+					    white-space: pre;
+					    overflow-x: auto;
+					    word-break: inherit;
+					    word-wrap: inherit;
+					}
+
+					pre a::before {
+					  content: counter(line-numbering);
+					  counter-increment: line-numbering;
+					  padding-right: 1em; /* space after numbers */
+					  width: 25px;
+					  text-align: right;
+					  opacity: 0.7;
+					  display: inline-block;
+					  color: #aaa;
+					  background: #eee;
+					  margin-right: 16px;
+					  padding: 2px 10px;
+					  font-size: 13px;
+					  -webkit-touch-callout: none;
+					  -webkit-user-select: none;
+					  -khtml-user-select: none;
+					  -moz-user-select: none;
+					  -ms-user-select: none;
+					  user-select: none;
+					}
+
+					pre a:first-of-type::before {
+					  padding-top: 10px;
+					}
+
+					pre a:last-of-type::before {
+					  padding-bottom: 10px;
+					}
+
+					pre a:only-of-type::before {
+					  padding: 10px;
+					}
+			
+					.highlight { background-color: #ffffcc } /* RIGHT */
+					</style>
+	      </head>
+	      <body>
+				  <div>
+							<div style='width:25%;'>
+									<ul id="tree" class="ztree" style='width:100%'>
+		
+									</ul>
+							</div>
+			        <div id='readme' style='width:70%;margin-left:20%;'>
+			          	<article class='markdown-body'>
+			            	<style>.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f0f0f0; }
+.highlight .c { color: #60a0b0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40a070 } /* Literal.Number */
+.highlight .s { color: #4070a0 } /* Literal.String */
+.highlight .na { color: #4070a0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60add5 } /* Name.Constant */
+.highlight .nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287e } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #bb60d5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #40a070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40a070 } /* Literal.Number.Float */
+.highlight .mh { color: #40a070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40a070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40a070 } /* Literal.Number.Oct */
+.highlight .sb { color: #4070a0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070a0 } /* Literal.String.Char */
+.highlight .sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070a0 } /* Literal.String.Double */
+.highlight .se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070a0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #c65d09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070a0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #bb60d5 } /* Name.Variable.Class */
+.highlight .vg { color: #bb60d5 } /* Name.Variable.Global */
+.highlight .vi { color: #bb60d5 } /* Name.Variable.Instance */
+.highlight .il { color: #40a070 } /* Literal.Number.Integer.Long */</style>
+<h1>iOS面试题 2016版</h1>
+
+<p><code>2015-12-28 达内纪老师</code> <a href="https://github.com/jiyingxin/Documents/tree/master/iOS%E9%9D%A2%E8%AF%95%E9%A2%98">GitHub</a>，<a href="http://blog.csdn.net/jiyingxin">CSDN博客</a></p>
+
+<p><img src="http://7xpk73.com1.z0.glb.clouddn.com/8fb0f6bfd7bd50e285535532d4b45255.jpg" alt=""></p>
+<div class="highlight"><pre><span class="err">说明：</span>
+<span class="err">最近为达内学员整理面试题。发现网上的面试题和答案基本都是抄来抄去的，甚至很多答案都是错误的。</span>
+<span class="err">所以整理了常见的面试题，对答案重新进行了筛选整理。</span>
+<span class="err">如果答案有错漏或者更好的答案，希望大家能够在</span><span class="vg">GitHub</span><span class="err">或者</span><span class="vg">CSDN</span><span class="err">通知我。</span>
+<span class="err">此文档将会持续更新。</span><span class="vg">GitHub</span><span class="err">会优先更新。</span>
+</pre></div>
+<!--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  
+<script type="text/javascript">
+ $(document).ready(function(){
+      $("h2,h4,h5,h6").each(function(i,item){
+        var tag = $(item).get(0).localName;
+        $(item).attr("id","wow"+i);
+        $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+        $(".newh2").css("margin-left",0);
+        $(".newh3").css("margin-left",20);
+        $(".newh4").css("margin-left",40);
+        $(".newh5").css("margin-left",60);
+        $(".newh6").css("margin-left",80);
+      });
+ });
+</script>
+<div id="category"></div>-->
+
+<h4>1. OC中，与<code>alloc</code>语义相反的方法是<code>dealloc</code>还是<code>release</code>？与<code>retain</code>语义相反的方法是<code>dealloc</code>还是<code>release</code>？为什么？需要与<code>alloc</code>配对使用的方法是<code>dealloc</code>还是<code>release</code>，为什么？</h4>
+<div class="highlight"><pre><span class="w">    </span><span class="err">以下是针对</span><span class="vg">MRC</span><span class="p">(</span><span class="err">手动内存释放</span><span class="p">)</span><span class="err">模式</span><span class="o">:</span>
+<span class="w">    </span><span class="err">与</span><span class="vg">alloc</span><span class="err">语义相反的方法是</span><span class="vg">dealloc</span><span class="err">，与</span><span class="vg">retain</span><span class="err">语义相反的方法是</span><span class="vg">release</span><span class="err">。</span>
+<span class="w">    </span><span class="vg">alloc</span><span class="err">是为对象在内存中开辟空间，而</span><span class="vg">dealloc</span><span class="err">则是对象销毁时释放空间。</span>
+<span class="w">    </span><span class="vg">retain</span><span class="err">方法是对象开辟空间以后使对象的引用计数器加</span><span class="il">1</span><span class="err">，而</span><span class="vg">release</span><span class="err">是对象的引用计数器减</span><span class="il">1</span><span class="err">。</span>
+<span class="w">    </span><span class="err">需要与</span><span class="vg">alloc</span><span class="err">配对的方法是</span><span class="vg">release</span><span class="err">，因为对象创建以后，对象的引用计数器自动加</span><span class="il">1</span><span class="err">，</span>
+<span class="w">    </span><span class="err">而调用</span><span class="vg">release</span><span class="err">方法后，对象的引用计数器归</span><span class="il">0</span><span class="err">，系统会自动调用</span><span class="vg">dealloc</span><span class="err">方法释放空间。</span>
+</pre></div>
+<p><code>MRC</code><a href="MRC:%E6%89%8B%E5%8A%A8%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E3%80%82%E9%81%B5%E5%BE%AA%E8%B0%81%E7%94%B3%E8%AF%B7%E8%B0%81%E9%87%8A%E6%94%BE%E7%9A%84%E5%8E%9F%E5%88%99%EF%BC%8C%E9%9C%80%E8%A6%81%E6%89%8B%E5%8A%A8%E7%9A%84%E5%A4%84%E7%90%86%E5%86%85%E5%AD%98%E8%AE%A1%E6%95%B0%E7%9A%84%E5%A2%9E%E5%8A%A0%E5%92%8C%E4%BF%AE%E6%94%B9%E3%80%82%E4%BB%8E12%E5%B9%B4%E5%BC%80%E5%A7%8B%EF%BC%8C%E9%80%90%E6%AD%A5%E8%A2%ABARC(%E8%87%AA%E5%8A%A8%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE)%E6%A8%A1%E5%BC%8F%E5%8F%96%E4%BB%A3%E3%80%82">^MRC</a></p>
+
+<h4>2. 在一个对象的方法里面：<code>self.name = @&quot;object&quot;;</code>和 <code>_name = @&quot;object&quot;</code>有什么不同吗？</h4>
+<div class="highlight"><pre>    <span class="nb">self</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&quot;object&quot;</span><span class="p">;</span> <span class="err">是通过点语法修改属性</span><span class="n">name</span><span class="err">的值。</span>
+    <span class="err">本质上使用的是</span><span class="n">name</span><span class="err">属性的</span><span class="k">setter</span><span class="err">方法进行的赋值操作，实际上执行的代码是</span>
+
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">setName</span><span class="p">:</span><span class="s">@&quot;object&quot;</span><span class="p">];</span>
+
+    <span class="err">例如：</span>
+    <span class="k">@property</span><span class="p">(</span><span class="k">nonatomic</span><span class="p">,</span> <span class="k">strong</span><span class="p">)</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+    <span class="c1">//根据@property关键词，系统自动生成setter方法。</span>
+    <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span><span class="p">{</span>
+        <span class="c1">//根据strong关键词</span>
+        <span class="p">[</span><span class="n">name</span> <span class="k">retain</span><span class="p">];</span>  <span class="c1">//内存计数+1</span>
+        <span class="p">[</span><span class="n">_name</span> <span class="k">release</span><span class="p">];</span>    <span class="c1">//把之前指针指向的内容内存计数-1</span>
+        <span class="n">_name</span> <span class="o">=</span> <span class="n">name</span><span class="p">;</span> <span class="c1">//指向新内容</span>
+    <span class="p">}</span>
+
+    <span class="n">_name</span> <span class="o">=</span> <span class="p">@</span><span class="err">“</span><span class="n">object</span><span class="err">”</span><span class="p">;</span> <span class="err">只是单纯的把‘</span><span class="n">_name</span><span class="err">’指针指向‘</span><span class="s">@&quot;object&quot;</span><span class="err">’字符串对象所在的地址，</span>
+    <span class="err">没有调用方法。</span>
+</pre></div>
+<p><code>点语法</code>[^PointSyntax]</p>
+
+<h4>3. 这段代码有什么问题吗？</h4>
+
+<blockquote>
+<p>-(void)setAge:(int)newAge{<br>
+self.age = newAge;<br>
+} </p>
+</blockquote>
+<div class="highlight"><pre>    <span class="err">在</span><span class="n">age</span><span class="err">属性的</span><span class="k">setter</span><span class="err">方法中，不能通过点语法给该属性赋值。</span>
+    <span class="err">会造成</span><span class="k">setter</span><span class="err">方法的循环调用。因为</span><span class="nb">self</span><span class="p">.</span><span class="n">age</span> <span class="o">=</span> <span class="n">newAge</span><span class="p">;</span> 
+    <span class="err">本质上是在调用</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">setAge</span><span class="p">:</span><span class="n">newAge</span><span class="p">];</span> <span class="err">方法。</span>
+    <span class="err">解决循环调用的方法是方法体修改为</span> <span class="n">_age</span> <span class="o">=</span> <span class="n">newAge</span><span class="p">;</span>
+
+    <span class="err">另外</span> <span class="err">变量名称不能使用</span><span class="n">new</span><span class="err">开头！</span>
+</pre></div>
+<h4>4. 以下每行代码执行后，person对象的retain count分别是多少？</h4>
+
+<blockquote>
+<p>Person *person = [[Person alloc] init];<br>
+   [person retain];<br>
+   [person release];<br>
+   [person release];  </p>
+</blockquote>
+<div class="highlight"><pre>   <span class="n">Person</span> <span class="o">*</span><span class="n">person</span> <span class="o">=</span> <span class="p">[[</span><span class="n">Person</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>  <span class="o">=</span><span class="mi">1</span>
+   <span class="p">[</span><span class="n">person</span> <span class="k">retain</span><span class="p">];</span>  <span class="o">+</span><span class="mi">1</span>    <span class="o">=</span> <span class="mi">2</span>
+   <span class="p">[</span><span class="n">person</span> <span class="k">release</span><span class="p">];</span>  <span class="o">-</span><span class="mi">1</span>   <span class="o">=</span> <span class="mi">1</span>
+   <span class="p">[</span><span class="n">person</span> <span class="k">release</span><span class="p">];</span>  <span class="o">-</span><span class="mi">1</span>   <span class="o">=</span> <span class="mi">0</span>
+
+   <span class="err">内存计数技术规律</span>
+   <span class="n">alloc</span><span class="err">，</span><span class="n">new</span><span class="err">，</span><span class="k">copy</span>   <span class="err">内存计数</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">retain</span> <span class="o">+</span><span class="mi">1</span>
+   <span class="k">release</span> <span class="o">-</span><span class="mi">1</span>
+   <span class="bp">UIView</span>  <span class="n">addSubview</span>  <span class="o">+</span><span class="mi">1</span>
+   <span class="bp">NSMutableArray</span>  <span class="n">addObject</span>   <span class="o">+</span><span class="mi">1</span>
+</pre></div>
+<h4>5. 这段代码有什么问题，如何修改？</h4>
+
+<blockquote>
+<p>for(int i = 0; i &lt; someLargeNumber; i++){<br>
+     NSString *string = @“Abc”;<br>
+    string = [string lowercaseString];<br>
+    string = [string stringByAppendingString:@“xyz”];<br>
+    NSLog(@“%@“, string);<br>
+   }  </p>
+</blockquote>
+<div class="highlight"><pre><span class="err">代码本身不会报错。</span>
+<span class="err">但是猜测出题者的意思是要循环添加为</span><span class="w"> </span><span class="vg">abcxyzxyzxyz</span><span class="o">.....</span><span class="err">这样的形式。</span>
+<span class="err">如果是想在</span><span class="vg">Abc</span><span class="err">后面拼接多个</span><span class="vg">xyz</span><span class="err">字符串的话，</span>
+<span class="err">则需要把</span><span class="s2">&quot;NSString *string = @“Abc”;&quot;</span><span class="w"> </span><span class="err">这行代码放在循环语句外面。</span>
+</pre></div>
+<h4>6. 简要叙述面向对象的特点，特别是多态。</h4>
+<div class="highlight"><pre><span class="nl">1</span><span class="o">.</span><span class="w"> </span><span class="err">封装</span>
+<span class="err">封装是对象和类概念的主要特性。它是隐藏内部实现，提供外部接口，可以看作是“包装”。</span><span class="w"> </span>
+<span class="err">封装，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，</span>
+<span class="err">对不可信的进行信息隐藏。</span>
+<span class="err">封装的目的是增强安全性和简化编程，使用者不必了解具体的实现细节，而只是要通过外部接口，</span>
+<span class="err">以特定的访问权限来使用类的成员。</span>
+<span class="err">好处：可以隐藏内部实现细节。通过大量功能类封装，加快后期开发速度。</span>
+
+<span class="nl">2</span><span class="o">.</span><span class="w"> </span><span class="err">继承</span>
+<span class="err">面向对象编程</span><span class="w"> </span><span class="p">(</span><span class="vg">OOP</span><span class="p">)</span><span class="w"> </span><span class="err">语言的一个主要功能就是“继承”。</span>
+<span class="err">继承是指这样一种能力：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下</span>
+<span class="err">对这些功能进行扩展。</span>
+<span class="err">通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。</span>
+<span class="err">继承的过程，就是从一般到特殊的过程。在考虑使用继承时，有一点需要注意，</span>
+<span class="err">那就是两个类之间的关系应该是“属于”关系。</span>
+<span class="err">例如，</span><span class="vg">Employee</span><span class="p">(</span><span class="err">雇员</span><span class="p">)</span><span class="err">是一个人，</span><span class="vg">Manager</span><span class="p">(</span><span class="err">领导</span><span class="p">)</span><span class="err">也是一个人，因此这两个类都可以继承</span><span class="vg">Person</span><span class="err">类。</span>
+<span class="err">但是</span><span class="w"> </span><span class="vg">Leg</span><span class="p">(</span><span class="err">腿</span><span class="p">)</span><span class="w"> </span><span class="err">类却不能继承</span><span class="w"> </span><span class="vg">Person</span><span class="w"> </span><span class="err">类，因为腿并不是一个人。</span>
+
+<span class="nl">3</span><span class="o">.</span><span class="w"> </span><span class="err">多态</span>
+<span class="err">多态性（</span><span class="vg">polymorphism</span><span class="err">）是允许你将父对象设置成为和一个或更多的他的子对象相等的技术，</span>
+<span class="err">赋值之后，父对象就可以根据当前赋值给它的子对象的特性以不同的方式运作。</span>
+<span class="err">简单的说，就是一句话：允许将子类类型的指针赋值给父类类型的指针。</span>
+<span class="err">不同对象以自己的方式响应相同的消息的能力叫做多态。</span>
+<span class="err">意思就是假设生物类（</span><span class="vg">life</span><span class="err">）都用有一个相同的</span><span class="w"> </span><span class="err">方法</span><span class="o">-</span><span class="vg">eat</span><span class="p">;</span><span class="err">那人类属于生物，猪也属于生物，</span>
+<span class="err">都继承了</span><span class="vg">life</span><span class="err">后，实现各自的</span><span class="vg">eat</span><span class="err">，但是调用是我们只需调用各自的</span><span class="vg">eat</span><span class="err">方法。</span>
+<span class="err">也就是不同的对象以</span><span class="w"> </span><span class="err">自己的方式响应了相同的消息（响应了</span><span class="vg">eat</span><span class="err">这个选择器）。</span>
+<span class="err">实现多态，有二种方式，覆盖，重载。</span>
+<span class="err">•  </span><span class="w"> </span><span class="err"> 覆盖</span><span class="p">(</span><span class="vg">override</span><span class="p">)</span><span class="err">，是指子类重新定义父类的虚函数的做法。</span>
+<span class="err">•  </span><span class="w"> </span><span class="err"> 重载</span><span class="p">(</span><span class="vg">overload</span><span class="p">)</span><span class="err">，是指允许存在多个同名函数，而这些函数的参数表不同</span>
+<span class="w">        </span><span class="err">（或许参数个数不同，或许参数类型不同，或许两者都不同）。</span>
+<span class="o">**</span><span class="w"> </span><span class="err">这里注意：</span><span class="vg">OC</span><span class="err">没有重载，因为</span><span class="vg">OC</span><span class="err">只认函数名，不认参数类型。</span><span class="vg">OC</span><span class="err">不允许存在多个同名函数。</span>
+
+<span class="err">总结：封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；</span>
+<span class="err">它们的目的都是为了——代码重用。</span>
+<span class="err">而多态则是为了实现另一个目的——接口重用！</span>
+<span class="err">多态的作用，就是为了类在继承和派生的时候，保证使用“家谱”中任一类的实例的某一属性时的正确调用。</span>
+<span class="err">在类层次中，子类只继承一个父类的数据结构和方法，则称为单重继承。</span><span class="w"> </span>
+<span class="err">在类层次中，子类继承了多个父类的数据结构和方法，则称为多重继承。</span><span class="w"> </span>
+</pre></div>
+<h4>7. objective-c 所有对象间的交互是如何实现的？</h4>
+<div class="highlight"><pre><span class="err">在对象间交互中每个对象承担的角色不同，</span>
+<span class="err">但总的来说无非就是”数据的发送者”或”数据的接收者”两种角色。</span>
+<span class="err">消息的正向传递比较简单，直接拿到接受者的指针即可。</span>
+<span class="err">消息的反响传递可以通过委托模式，观察者模式</span><span class="p">(</span><span class="err">本质是单例模式</span><span class="p">)</span><span class="err">，</span><span class="vg">block</span><span class="err">语法，</span><span class="vg">AppDelegagte</span><span class="err">来实现。</span>
+<span class="err">其中委托模式，</span><span class="vg">block</span><span class="err">语法都是</span><span class="il">1</span><span class="err">对</span><span class="il">1</span><span class="err">的消息传递。</span><span class="w"> </span><span class="err">观察者模式是</span><span class="il">1</span><span class="err">对多。</span>
+<span class="vg">AppDelegate</span><span class="err">比较特殊，这是一个生命周期与进程一致的对象。</span>
+</pre></div>
+<h4>8. 什么叫数据结构？</h4>
+<div class="highlight"><pre><span class="err">数据结构是计算机存储、组织数据的方式。是指相互之间存在一种或多种特定关系的数据元素的集合。</span>
+<span class="err">通常，精心选择的数据结构可以带来更高的运行或者存储效率。</span>
+</pre></div>
+<h4>9. OC的类可以多继承吗？可以实现多个接口吗？Category是什么？分类中能定义成员变量或属性吗？为什么？重写一个类的方式是继承好还是类别好？为什么？</h4>
+<div class="highlight"><pre><span class="vg">Object</span><span class="o">-</span><span class="vg">c</span><span class="err">的类不可以多重继承</span><span class="p">;</span><span class="err">可以实现多个接口</span><span class="p">(</span><span class="err">协议</span><span class="p">)</span><span class="err">，通过实现多个接口可以完成</span><span class="vg">C</span><span class="o">++</span><span class="err">的多重继承</span><span class="p">;</span>
+<span class="vg">Category</span><span class="err">是类别，推荐使用类别，用</span><span class="vg">Category</span><span class="err">去重写类的方法，仅对本引入</span><span class="vg">Category</span><span class="err">的类有效，</span>
+<span class="err">不会影响到其他类与原有类的关系。</span>
+</pre></div>
+<h4>10. #import和#include有什么区别？@class呢？#import&lt;&gt;和#import&quot;&quot;有什么区别？</h4>
+<div class="highlight"><pre><span class="cp">#import是Objective-C导入头文件的关键字，#include是C/C++导入头文件的关键字,</span>
+<span class="err">使用#</span><span class="n">import</span><span class="err">头文件会自动只导入一次，不会重复导入，相当于#</span><span class="n">include</span><span class="err">和#</span><span class="n">pragma</span> <span class="n">once</span><span class="p">;</span>
+<span class="p">@</span><span class="k">class</span><span class="err">告诉编译器某个类的声明，当执行时，才去查看类的实现文件，可以解决头文件的相互包含</span><span class="p">;</span>
+<span class="cp">#import&lt;&gt;用来包含系统的头文件，#import””用来包含用户头文件。</span>
+<span class="err">例如：</span>
+
+<span class="cm">/* 如果这里不写@class，则报错。 原因是找不到MyVC的定义。因为代码执行顺序是由上至下的。</span>
+<span class="cm">当声明协议MyVCDelegate时， MyVC还没有声明。</span>
+<span class="cm">使用 @class 名称随便写，不管是否存在。 可以自己用代码尝试随意写个@class 例如：</span>
+<span class="cm">@class Hello; </span>
+<span class="cm">就算项目中根本没有Hello类，这里也不会报错。 因为只有当项目运行起来，才会真的去检查Hello类</span>
+<span class="cm">是否声明了。</span>
+<span class="cm">*/</span>
+
+<span class="k">@class</span> <span class="nc">MyVC</span>;
+<span class="k">@protocol</span> <span class="nc">MyVCDelegate</span> <span class="o">&lt;</span><span class="bp">NSObject</span><span class="o">&gt;</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">myVC</span><span class="p">:(</span><span class="n">MyVC</span> <span class="o">*</span><span class="p">)</span><span class="n">myVC</span> <span class="nl">click</span><span class="p">:(</span><span class="kt">id</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
+<span class="k">@end</span>
+<span class="k">@interface</span> <span class="nc">MyVC</span> : <span class="nc">BaseVC</span>
+<span class="k">@end</span>
+
+<span class="n">ps</span><span class="err">：</span><span class="n">iOS7</span><span class="err">之后的新特性，可以使用</span><span class="p">@</span><span class="n">import</span> <span class="err">关键词来代理#</span><span class="n">import</span><span class="err">引入系统类库。</span>
+    <span class="err">使用</span><span class="p">@</span><span class="n">import</span><span class="err">引入系统类库，不需要到</span><span class="n">build</span> <span class="n">phases</span><span class="err">中先添加添加系统库到项目中。</span>
+</pre></div>
+<h4>11.属性readwrite, readonly, assign, retain, copy, nonatomic各是什么作用？在哪种情况下用？</h4>
+<div class="highlight"><pre><span class="nl">1</span><span class="o">.</span><span class="vg">readwrite</span><span class="w"> </span><span class="err">是可读可写特性；需要生成</span><span class="vg">getter</span><span class="err">方法和</span><span class="vg">setter</span><span class="err">方法时</span>
+<span class="err">（补充：默认属性，将生成不带额外参数的</span><span class="vg">getter</span><span class="err">和</span><span class="vg">setter</span><span class="err">方法（</span><span class="vg">setter</span><span class="err">方法只有一个参数））</span>
+<span class="nl">2</span><span class="o">.</span><span class="vg">readonly</span><span class="w"> </span><span class="err">是只读特性，只会生成</span><span class="vg">getter</span><span class="err">方法，不会生成</span><span class="vg">setter</span><span class="err">方法</span><span class="p">;</span><span class="err">不希望属性在类外改变</span>
+<span class="nl">3</span><span class="o">.</span><span class="vg">assign</span><span class="w"> </span><span class="err">是赋值特性，</span><span class="vg">setter</span><span class="err">方法将传入参数赋值给实例变量；仅设置变量时；</span>
+<span class="nl">4</span><span class="o">.</span><span class="vg">retain</span><span class="p">(</span><span class="vg">MRC</span><span class="p">)</span><span class="o">/</span><span class="vg">strong</span><span class="p">(</span><span class="vg">ARC</span><span class="p">)</span><span class="w"> </span><span class="err">表示持有特性，</span><span class="vg">setter</span><span class="err">方法将传入参数先保留，</span>
+<span class="w">  </span><span class="err">再赋值，传入参数的</span><span class="vg">retaincount</span><span class="err">会</span><span class="o">+</span><span class="il">1</span><span class="p">;</span>
+<span class="nl">5</span><span class="o">.</span><span class="vg">copy</span><span class="w"> </span><span class="err">表示拷贝特性，</span><span class="vg">setter</span><span class="err">方法将传入对象复制一份；需要完全一份新的变量时。</span>
+<span class="nl">6</span><span class="o">.</span><span class="vg">nonatomic</span><span class="w"> </span><span class="err">非原子操作，决定编译器生成的</span><span class="vg">setter</span><span class="err">和</span><span class="vg">getter</span><span class="err">方法是否是原子操作。</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="vg">atomic</span><span class="err">表示多线程安全，需要对方法加锁，保证同一时间只有一个线程访问属性，</span>
+<span class="w">      </span><span class="err">因为有等待过程，所以影响执行效率</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="err">一般使用</span><span class="vg">nonatomic</span><span class="err">。不加锁。效率会更高。但是线程不安全。</span>
+</pre></div>
+<h4>12. 写一个setter方法用于完成@property(nonatomic, strong)NSString *name, 写一个setter方法用于完成@property(nonatomic, copy)NSString *name</h4>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">setName:</span><span class="p">(</span><span class="bp">NSString</span><span class="o">*</span><span class="p">)</span><span class="nv">str</span> <span class="c1">//retain</span>
+<span class="err">　</span><span class="p">{</span>
+<span class="err">　　</span><span class="p">[</span><span class="n">str</span> <span class="k">retain</span><span class="p">];</span>
+<span class="err">　　</span><span class="p">[</span><span class="n">_name</span> <span class="k">release</span><span class="p">];</span>
+<span class="err">　　</span><span class="n">_name</span> <span class="o">=</span> <span class="n">str</span><span class="p">;</span>
+<span class="err">　</span><span class="p">}</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">setName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">str</span> <span class="c1">//copy</span>
+<span class="err">　</span><span class="p">{</span>
+<span class="err">　　</span><span class="kt">id</span> <span class="n">t</span> <span class="o">=</span> <span class="p">[</span><span class="n">str</span> <span class="k">copy</span><span class="p">];</span>
+<span class="err">　　</span><span class="p">[</span><span class="n">_name</span> <span class="k">release</span><span class="p">];</span>
+<span class="err">　　</span><span class="n">_name</span> <span class="o">=</span> <span class="n">t</span><span class="p">;</span>
+<span class="err">　</span><span class="p">}</span>
+</pre></div>
+<h4>13. 对于语句NSString *obj = [[NSData alloc] init]; obj在编译时和运行时分别是什么类型的对象？</h4>
+<div class="highlight"><pre><span class="err">编译时是</span><span class="vg">NSString</span><span class="err">的类型</span><span class="p">;</span><span class="err">运行时是</span><span class="vg">NSData</span><span class="err">类型的对象。</span>
+</pre></div>
+<h4>14. 常见的OC的数据类型有哪些？ 和C的基本数据类型有什么区别？ 如：NSInteger和int</h4>
+<div class="highlight"><pre><span class="kt">object</span><span class="o">-</span><span class="n">c</span><span class="err">的数据类型有</span><span class="n">NSString</span><span class="err">，</span><span class="n">NSNumber</span><span class="err">，</span><span class="n">NSArray</span><span class="err">，</span><span class="n">NSMutableArray</span><span class="err">，</span><span class="n">NSData</span><span class="err">等等。</span>
+
+<span class="n">C</span><span class="err">语言的基本数据类型</span><span class="n">int</span><span class="err">，只是一定字节的内存空间，用于存放数值;</span>
+<span class="n">NSInteger</span><span class="err">类型的定义是</span>
+
+<span class="p">#</span><span class="k">if</span> <span class="n">__LP64__</span> <span class="err">||</span> <span class="p">(</span><span class="n">TARGET_OS_EMBEDDED</span> <span class="o">&amp;&amp;</span> <span class="p">!</span><span class="n">TARGET_OS_IPHONE</span><span class="p">)</span> 
+<span class="err">||</span> <span class="n">TARGET_OS_WIN32</span>  <span class="err">||</span> <span class="n">NS_BUILD_32_LIKE_64</span>
+<span class="n">typedef</span> <span class="kt">long</span> <span class="n">NSInteger</span><span class="err">;</span>
+<span class="n">typedef</span> <span class="n">unsigned</span> <span class="kt">long</span> <span class="n">NSUInteger</span><span class="err">;</span>
+<span class="p">#</span><span class="k">else</span>   
+<span class="n">typedef</span> <span class="n">int</span> <span class="n">NSInteger</span><span class="err">;</span>
+<span class="n">typedef</span> <span class="n">unsigned</span> <span class="n">int</span> <span class="n">NSUInteger</span><span class="err">;</span>
+<span class="p">#</span><span class="k">endif</span>
+
+<span class="err">可以看到，在</span><span class="mi">64</span><span class="err">位操作系统上，</span><span class="n">NSInteger</span><span class="err">是</span> <span class="n">C</span><span class="err">语言的</span><span class="kt">long</span><span class="err">类型。</span> 
+<span class="err">在</span><span class="mi">32</span><span class="err">位操作系统上，则是</span><span class="n">int</span><span class="err">类型。</span>
+</pre></div>
+<h4>15. id声明的对象有什么特性？</h4>
+<div class="highlight"><pre><span class="kt">id</span> <span class="err">声明的对象具有运行时的特性，即可以指向任意类型的</span><span class="n">objcetive</span><span class="o">-</span><span class="n">c</span><span class="err">的对象</span><span class="p">;</span>
+<span class="err">可以作为返回值，也可以声明对象。</span>
+<span class="err">例如</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">id</span><span class="p">)</span><span class="nl">initWithName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span><span class="p">;</span>
+<span class="kt">id</span> <span class="n">obj</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSObject</span> <span class="n">new</span><span class="p">];</span>
+
+<span class="err">现在我们使用苹果推荐使用的“</span><span class="kt">instancetype</span><span class="err">”类型代替</span><span class="kt">id</span><span class="err">类型作为返回值</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nl">initWithName</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">name</span><span class="p">;</span>
+
+<span class="kt">instancetype</span><span class="err">和</span><span class="kt">id</span><span class="err">的区别在于，</span> <span class="kt">id</span><span class="err">可以声明对象</span> <span class="err">也可以作为返回值，</span>
+<span class="kt">instancetype</span><span class="err">只能作为返回值。</span>
+</pre></div>
+<h4>16. OC如何对内存管理的，说说你的看法和解决方法。</h4>
+<div class="highlight"><pre><span class="vg">Objective</span><span class="o">-</span><span class="vg">C</span><span class="err">的内存管理主要有三种方式</span><span class="vg">ARC</span><span class="p">(</span><span class="err">自动内存计数</span><span class="p">)</span><span class="err">、手动内存计数、内存池。</span>
+<span class="err">　　</span><span class="il">1</span><span class="o">.</span><span class="w"> </span><span class="err">自动内存计数</span><span class="vg">ARC</span><span class="err">：由</span><span class="vg">Xcode</span><span class="err">自动在</span><span class="vg">App</span><span class="err">编译阶段，在代码中添加内存管理代码。</span>
+<span class="err">　　</span><span class="il">2</span><span class="o">.</span><span class="w"> </span><span class="err">手动内存计数</span><span class="vg">MRC</span><span class="err">：遵循内存谁申请，谁添加。谁释放的原则。</span>
+<span class="err">　　</span><span class="il">3</span><span class="o">.</span><span class="w"> </span><span class="err">内存释放池</span><span class="vg">Release</span><span class="w"> </span><span class="vg">Pool</span><span class="err">：把需要释放的内存统一放在一个池子中，当池子被抽干后</span><span class="p">(</span><span class="vg">drain</span><span class="p">)</span>
+<span class="err">　　</span><span class="w">  </span><span class="err">池子中所有的内存空间也被自动释放掉。</span><span class="w"> </span><span class="err">内存池的释放操作分为自动和手动。</span>
+<span class="err">　　</span><span class="w">   </span><span class="err">自动释放受</span><span class="vg">runloop</span><span class="err">机制影响。</span>
+</pre></div>
+<h4>17. 你对@interface中的成员变量和@property声明的属性的理解。</h4>
+<div class="highlight"><pre><span class="err">@</span><span class="vg">interface</span><span class="w"> </span><span class="nl">AA:</span><span class="w"> </span><span class="vg">NSObject</span><span class="p">{</span>
+<span class="w">    </span><span class="vg">NSString</span><span class="w"> </span><span class="o">*</span><span class="vg">_name</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="err">成员变量</span>
+<span class="p">}</span>
+<span class="err">@</span><span class="vg">property</span><span class="w"> </span><span class="vg">NSString</span><span class="w"> </span><span class="o">*</span><span class="vg">sex</span><span class="p">;</span><span class="w"> </span><span class="o">//</span><span class="err">属性</span>
+
+<span class="err">如上所示：</span>
+<span class="err">属性拥有</span><span class="vg">setter</span><span class="err">和</span><span class="vg">getter</span><span class="err">方法</span><span class="w"> </span><span class="err">外加</span><span class="vg">_sex</span><span class="err">成员变量。</span>
+<span class="vg">_name</span><span class="err">只是成员变量，</span><span class="w"> </span><span class="err">没有</span><span class="vg">setter</span><span class="err">和</span><span class="vg">getter</span><span class="err">方法。</span>
+</pre></div>
+<h4>18. do while 和while do的区别？</h4>
+<div class="highlight"><pre><span class="vg">while</span><span class="w"> </span><span class="vg">do</span><span class="err">是先判断</span><span class="vg">while</span><span class="err">中的表达式的真假，再执行循环。</span>
+<span class="vg">do</span><span class="w"> </span><span class="vg">while</span><span class="err">先进行循环一次，再判断</span><span class="vg">while</span><span class="err">中的表达式的真假。</span>
+</pre></div>
+<h4>19. 用预处理指令#define声明一个常数，用以表明一年中有多少秒(忽略闰年问题)。</h4>
+<div class="highlight"><pre><span class="c">#define SECONDS_PER_YEAR (60 * 60 * 24 * 365)</span>
+</pre></div>
+<h4>20. 浅拷贝和深拷贝的区别？</h4>
+<div class="highlight"><pre><span class="err">浅拷贝：只复制指向对象的指针，而不复制引用对象本身。</span>
+<span class="err">深拷贝：复制引用和对象本身。</span>
+<span class="err">意思就是说我有个</span><span class="vg">A</span><span class="err">对象，复制一份后得到</span><span class="vg">A_copy</span><span class="err">对象后，</span>
+<span class="err">对于浅复制来说，</span><span class="vg">A</span><span class="err">和</span><span class="vg">A_copy</span><span class="err">指向的是同一个内存资源，复制的只不过是是一个指针，</span>
+<span class="err">对象本身资源还是只有一份。</span>
+<span class="err">那如果我们对</span><span class="vg">A_copy</span><span class="err">执行了修改操作</span><span class="p">,</span><span class="err">那么发现</span><span class="vg">A</span><span class="err">引用的对象同样被修改，</span>
+<span class="err">这其实违背了我们复制拷贝的一个思想。</span>
+<span class="err">深复制就好理解了</span><span class="p">,</span><span class="err">内存中存在了两份独立对象本身。 </span><span class="w">   </span>
+<span class="err">用网上一哥们通俗的话将就是： </span><span class="w">   </span>
+<span class="err">浅拷贝好比你和你的影子，你完蛋，你的影子也完蛋 </span><span class="w">    </span>
+<span class="err">深拷贝好比你和你的克隆人，你完蛋，你的克隆人还活着。</span>
+</pre></div>
+<h4>21. 类别的作用？继承和类别在实现中有何区别？</h4>
+<div class="highlight"><pre><span class="vg">Category</span><span class="err">可以向类中添加新的方法，或者重写已有方法。</span>
+<span class="err">正常情况下不可以添加属性。但是实际应用中可以通过</span><span class="vg">runtime</span><span class="err">机制添加属性。</span>
+<span class="err">类别主要有</span><span class="il">3</span><span class="err">个作用：</span>
+<span class="o">-</span><span class="w"> </span><span class="err">将类的实现分散到多个不同文件或多个不同框架中。降低耦合性。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">重写主类方法</span>
+<span class="o">-</span><span class="w"> </span><span class="err">向类中添加协议，属性，方法。</span>
+
+<span class="err">继承主要作用：</span>
+<span class="o">-</span><span class="w"> </span><span class="err">重写父类方法</span>
+<span class="o">-</span><span class="w"> </span><span class="err">在父类基础上增加属性，方法，协议</span>
+
+<span class="err">区别：继承使用时，需要使用子类。</span><span class="w"> </span><span class="vg">Category</span><span class="err">使用时只需要引入头文件。</span>
+</pre></div>
+<h4>22. 我们说的OC是动态运行时语言是什么意思？</h4>
+<div class="highlight"><pre><span class="err">`编译时`等价于`编码时`</span><span class="p">,</span><span class="w"> </span><span class="err">`编码时`就是程序员写的代码的样子</span><span class="o">.</span><span class="w"> </span><span class="err">程序员为一个类编写代码</span><span class="p">,</span><span class="w"> </span>
+<span class="err">便可以为一个类添加</span><span class="w"> </span><span class="err">“成员变量</span><span class="p">(</span><span class="err">实例变量</span><span class="p">)</span><span class="err">”</span><span class="w"> </span><span class="o">.</span><span class="w"> </span><span class="err">程序员也可以在一个类中写一些函数</span><span class="p">,</span><span class="w"> </span><span class="err">被称作“方法”</span><span class="o">.</span>
+<span class="w"> </span><span class="err">运行前编译</span><span class="p">,</span><span class="w"> </span><span class="err">编译器会把程序员写的代码编译成可执行文件</span><span class="p">,</span><span class="w"> </span><span class="err">里面便有之前写的类的信息</span><span class="p">,</span><span class="w"> </span>
+<span class="w"> </span><span class="err">包括`实例变量`和`方法`</span><span class="p">,</span><span class="w"> </span><span class="err">这些信息并不能组成一个实际的数据类型</span><span class="o">.</span><span class="w"> </span>
+<span class="w"> </span><span class="err">程序运行后</span><span class="p">,</span><span class="w"> </span><span class="err">会将这些信息拼凑成一个结构体</span><span class="p">,</span><span class="w"> </span><span class="err">这个结构体便是一个数据类型</span><span class="o">.</span><span class="w"> </span>
+<span class="w"> </span><span class="err">同时</span><span class="p">,</span><span class="w"> </span><span class="err">在运行期间</span><span class="p">,</span><span class="w"> </span><span class="err">数据类型可以改变</span><span class="p">,</span><span class="w"> </span><span class="err">表现为</span><span class="o">:</span>
+
+<span class="nl">1</span><span class="o">.</span><span class="w"> </span><span class="err">可以动态增添方法</span>
+<span class="nl">2</span><span class="o">.</span><span class="w"> </span><span class="err">可以动态增添实例变量</span>
+<span class="err">等等</span><span class="o">..</span><span class="err">做一些运行时数据类型修改</span><span class="o">.</span>
+
+<span class="err">一旦做了运行时修改</span><span class="p">,</span><span class="w"> </span><span class="err">就会使得这个结构体与程序员当初编写的类不一样</span><span class="o">.</span>
+</pre></div>
+<h4>23. 为什么很多内置类如UITableView的delegate属性都是assign而不是retain ？</h4>
+<div class="highlight"><pre><span class="err">如果是</span><span class="vg">retain</span><span class="err">会引起循环引用。</span>
+<span class="err">所有的引用计数系统，都存在循环引用的问题。例如下面的引用关系：</span>
+<span class="err">对象</span><span class="vg">a</span><span class="err">创建并引用了对象</span><span class="vg">b</span><span class="p">,</span><span class="err">对象</span><span class="vg">b</span><span class="err">创建并引用了对象</span><span class="vg">c</span><span class="p">,</span><span class="err">对象</span><span class="vg">c</span><span class="err">创建并引用了对象</span><span class="vg">b</span><span class="o">.</span>
+<span class="err">这时候</span><span class="vg">b</span><span class="err">和</span><span class="vg">c</span><span class="err">的引用计数分别是</span><span class="il">2</span><span class="err">和</span><span class="il">1</span><span class="err">。当</span><span class="vg">a</span><span class="err">不再使用</span><span class="vg">b</span><span class="err">，调用</span><span class="vg">release</span><span class="err">释放对</span><span class="vg">b</span><span class="err">的所有权，因为</span><span class="vg">c</span><span class="err">还引用了</span><span class="vg">b</span><span class="err">。</span>
+<span class="err">所以</span><span class="vg">b</span><span class="err">的引用计数为</span><span class="il">1</span><span class="err">，</span><span class="vg">b</span><span class="err">不会被释放。</span><span class="vg">b</span><span class="err">不释放，</span><span class="vg">c</span><span class="err">的引用计数就是</span><span class="il">1</span><span class="err">，</span><span class="vg">c</span><span class="err">也不会被释放。</span>
+<span class="err">从此，</span><span class="vg">b</span><span class="err">和</span><span class="vg">c</span><span class="err">永远留在内存中。</span>
+
+<span class="err">这种情况，必须打断循环引用，通过其他规则来维护引用关系。</span>
+<span class="err">比如，我们常见的</span><span class="vg">delegate</span><span class="err">往往是</span><span class="vg">assign</span><span class="err">方式的属性而不是</span><span class="vg">retain</span><span class="err">方式的属性，</span>
+<span class="err">赋值不会增加引用计数，就是为了防止</span><span class="vg">delegation</span><span class="err">两端产生不必要的循环引用。</span>
+<span class="err">如果一个</span><span class="vg">UITableViewController</span><span class="err">对象</span><span class="vg">a</span><span class="err">通过</span><span class="vg">retain</span><span class="err">获取了</span><span class="vg">UITableView</span><span class="err">对象</span><span class="vg">b</span><span class="err">的所有权，</span>
+<span class="err">这个</span><span class="vg">UITableView</span><span class="err">对象</span><span class="vg">b</span><span class="err">的</span><span class="vg">delegate</span><span class="err">又是</span><span class="vg">a</span><span class="err">，如果这个</span><span class="vg">delegate</span><span class="err">是</span><span class="vg">retain</span><span class="err">方式的，</span>
+<span class="err">那基本上就没有机会释放这两个对象了。</span>
+</pre></div>
+<h4>24. 什么时候用delegate，什么时候用Notification？</h4>
+<div class="highlight"><pre><span class="vg">Delegate</span><span class="p">(</span><span class="err">委托模式</span><span class="p">)</span><span class="o">:</span>
+<span class="nl">1</span><span class="err">对</span><span class="il">1</span><span class="err">的反向消息通知功能。</span>
+
+<span class="vg">Notification</span><span class="p">(</span><span class="err">通知模式</span><span class="p">)</span><span class="o">:</span>
+<span class="err">只想要把消息发送出去，告知某些状态的变化。但是并不关心谁想要知道这个。</span>
+</pre></div>
+<h4>25. 什么是KVC和KVO？</h4>
+<div class="highlight"><pre><span class="n">KVC</span><span class="err">（</span><span class="n">Key</span><span class="o">-</span><span class="n">Value</span><span class="o">-</span><span class="n">Coding</span><span class="err">）</span><span class="o">:</span><span class="err">键</span> <span class="o">-</span> <span class="err">值编码是一种通过字符串间接访问对象的方式。</span>
+<span class="err">而不是通过调用</span><span class="k">setter</span><span class="err">方法或通过实例变量访问的机制。很多情况下可以简化程序代码。</span>
+<span class="err">例如：</span>
+
+<span class="k">@interface</span> <span class="nc">MeiLing</span>:<span class="bp">NSObject</span>
+
+<span class="k">@property</span> <span class="bp">NSString</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
+<span class="k">@property</span> <span class="bp">UILabel</span> <span class="o">*</span><span class="n">label</span><span class="p">;</span>
+
+<span class="k">@end</span>
+
+<span class="err">对于</span><span class="n">name</span><span class="err">的赋值</span> <span class="err">可以使用</span> <span class="n">meiLing</span><span class="p">.</span><span class="n">name</span> <span class="o">=</span> <span class="s">@&quot;笑玲&quot;</span><span class="p">;</span> <span class="err">这是点语法。调用的是</span><span class="n">setName</span><span class="err">方法。</span>
+<span class="n">KVC</span><span class="err">的写法是</span>  <span class="p">[</span><span class="n">meiLing</span> <span class="nl">setValue</span><span class="p">:</span><span class="s">@&quot;梦玲&quot;</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;name&quot;</span><span class="p">];</span>  <span class="err">通过</span><span class="n">name</span><span class="err">字符串赋值。</span>
+
+<span class="err">当然也可以跨层赋值，例如为</span><span class="n">label</span><span class="err">的</span><span class="n">text</span><span class="err">属性赋值</span>
+<span class="err">点语法：</span> <span class="n">meiLing</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="s">@&quot;笑玲&quot;</span><span class="p">;</span>
+<span class="n">KVC</span><span class="err">：</span> <span class="p">[</span><span class="n">meiLing</span> <span class="nl">setValue</span><span class="p">:</span><span class="s">@&quot;梦玲&quot;</span> <span class="nl">forKeyPath</span><span class="p">:</span><span class="s">@&quot;label.text&quot;</span><span class="p">];</span>
+
+<span class="nl">KVO</span><span class="p">:</span><span class="err">键值观察机制，他提供了观察某一属性变化的方法，极大的简化了代码。</span>
+    <span class="n">KVO</span> <span class="err">只能被</span> <span class="n">KVC</span><span class="err">触发，</span> <span class="err">包括使用</span><span class="n">setValue</span><span class="err">：</span><span class="n">forKey</span><span class="err">：方法</span> <span class="err">和</span> <span class="err">点语法。</span>
+<span class="err">通过下方方法为属性添加</span><span class="n">KVO</span><span class="err">观察</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">addObserver</span><span class="p">:(</span><span class="bp">NSObject</span> <span class="o">*</span><span class="p">)</span><span class="n">observer</span> 
+                <span class="nl">forKeyPath</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">keyPath</span> 
+                <span class="nl">options</span><span class="p">:(</span><span class="n">NSKeyValueObservingOptions</span><span class="p">)</span><span class="n">options</span> 
+                <span class="nl">context</span><span class="p">:(</span><span class="n">nullable</span> <span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">context</span><span class="p">;</span>
+<span class="err">当被观察的属性发生变化时，会自动触发下方方法</span>
+<span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">observeValueForKeyPath</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">keyPath</span> 
+                         <span class="nl">ofObject</span><span class="p">:(</span><span class="kt">id</span><span class="p">)</span><span class="n">object</span> 
+                             <span class="nl">change</span><span class="p">:(</span><span class="bp">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">change</span> 
+                            <span class="nl">context</span><span class="p">:(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">context</span>
+</pre></div>
+<h4>26. 设计模式是什么？你知道哪些设计模式，并简要叙述。</h4>
+<div class="highlight"><pre><span class="o">-</span><span class="w"> </span><span class="err">单例模式：通过</span><span class="vg">static</span><span class="err">关键词，声明全局变量。在整个进程运行期间只会被赋值一次。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">观察者模式：</span><span class="vg">KVO</span><span class="err">是典型的通知模式，观察某个属性的状态，状态发生变化时通知观察者。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">委托模式：代理</span><span class="o">+</span><span class="err">协议的组合。实现</span><span class="il">1</span><span class="err">对</span><span class="il">1</span><span class="err">的反相传值操作。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">工厂模式：通过一个类方法，批量的根据已有模板生产对象。</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">MVC</span><span class="err">模式：</span><span class="vg">Model</span><span class="w"> </span><span class="vg">View</span><span class="w"> </span><span class="vg">Control</span><span class="err">，</span><span class="w"> </span><span class="err">把模型</span><span class="w"> </span><span class="err">视图</span><span class="w"> </span><span class="err">控制器</span><span class="w"> </span><span class="err">层进行解耦合编写。</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">MVVM</span><span class="err">模式：</span><span class="vg">Model</span><span class="w"> </span><span class="vg">View</span><span class="w"> </span><span class="vg">ViewModel</span><span class="w"> </span><span class="err">把</span><span class="w"> </span><span class="err">模型</span><span class="w"> </span><span class="err">视图</span><span class="w"> </span><span class="err">业务逻辑</span><span class="w"> </span><span class="err">层进行解耦合编写。</span>
+</pre></div>
+<h4>27. 描述一下iOS SDK中如何实现MVC的开发模式。</h4>
+<div class="highlight"><pre><span class="vg">MVC</span><span class="err">即</span><span class="w">  </span><span class="vg">Model</span><span class="o">-</span><span class="vg">View</span><span class="o">-</span><span class="vg">Control</span><span class="w"> </span>
+<span class="vg">Model</span><span class="err">称为模型层，主要负责数据结构，业务逻辑相关的操作</span>
+<span class="vg">View</span><span class="w"> </span><span class="err">称为视图层，主要负责视图的展示</span>
+<span class="vg">Control</span><span class="w"> </span><span class="err">称为控制层，主要负责把</span><span class="vg">View</span><span class="err">和</span><span class="vg">Model</span><span class="err">层结合起来的操作。例如点击视图上的某个按钮</span>
+<span class="err">要执行</span><span class="vg">Model</span><span class="err">层中的某个业务逻辑。</span><span class="w"> </span><span class="err">或者把</span><span class="vg">Model</span><span class="err">中的数据展现在视图上。</span>
+</pre></div>
+<h4>28. ViewController的didReceiveMemoryWarning是在什么时候调用的？默认的操作是什么？</h4>
+<div class="highlight"><pre><span class="w">    </span><span class="err">当系统内存不足时，首先</span><span class="vg">UIViewController</span><span class="err">的</span><span class="vg">didReceiveMemoryWarining</span><span class="err">方法会被调用。</span>
+<span class="w">    </span><span class="err">默认操作如果当前控制器不是</span><span class="vg">window</span><span class="err">的根视图控制器，会自动将</span><span class="vg">self</span><span class="o">.</span><span class="vg">view</span><span class="err">释放。</span><span class="w">  </span>
+</pre></div>
+<h4>29. delegate和Block的区别？</h4>
+<div class="highlight"><pre><span class="vg">delegate</span><span class="err">：</span>
+<span class="o">-</span><span class="w"> </span><span class="err">需要定义协议方法并且实现协议方法，会使代码结构变复杂</span>
+<span class="o">-</span><span class="w"> </span><span class="err">效率没有</span><span class="vg">block</span><span class="err">高</span>
+
+<span class="vg">block</span><span class="err">：</span>
+<span class="o">-</span><span class="w"> </span><span class="err">代码结构更加紧凑，不需要额外定义方法。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">需要注意防止循环引用，使用</span><span class="vg">__weak</span><span class="w"> </span><span class="err">关键词修饰</span>
+<span class="o">-</span><span class="w"> </span><span class="err">当需要在块中修改外部变量时，需要对外部变量使用</span><span class="vg">__block</span><span class="w"> </span><span class="err">关键词修饰</span>
+</pre></div>
+<h4>30. frame和bounds有什么不同？</h4>
+<div class="highlight"><pre><span class="vg">frame</span><span class="err">指的是：该</span><span class="vg">view</span><span class="err">在父</span><span class="vg">view</span><span class="err">坐标系统中的位置和大小。（参照点是父亲的坐标系统）</span>
+<span class="vg">bounds</span><span class="err">指的是：该</span><span class="vg">view</span><span class="err">在本身坐标系统中</span><span class="w"> </span><span class="err">的位置和大小。（参照点是本身坐标系统）</span>
+</pre></div>
+<h4>31.ViewController生命周期</h4>
+<div class="highlight"><pre><span class="err">按照执行顺序排列</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">initWithCoder</span><span class="err">：通过</span><span class="vg">nib</span><span class="err">文件初始化时触发</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">awakeFromNib</span><span class="err">：</span><span class="vg">nib</span><span class="err">文件被加载的时候，会发送一个</span><span class="vg">awakeFromNib</span><span class="err">的消息到</span><span class="vg">nib</span><span class="err">文件中的每个对象</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">loadView</span><span class="err">：开始加载视图控制器自带的</span><span class="vg">view</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewDidLoad</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">被加载完成</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewWillAppear</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">将要显示在</span><span class="vg">window</span><span class="err">上</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">updateViewConstraints</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">开始更新</span><span class="vg">AutoLayout</span><span class="err">约束</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewWillLayoutSubviews</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">将要更新内容视图的位置</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewDidLayoutSubviews</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">已经更新视图的位置</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewDidAppear</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">已经展现到</span><span class="vg">window</span><span class="err">上</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewWillDisappear</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">将要从</span><span class="vg">window</span><span class="err">上消失</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">viewDidDisappear</span><span class="err">：视图控制器的</span><span class="vg">view</span><span class="err">已经从</span><span class="vg">window</span><span class="err">上消失</span>
+</pre></div>
+<h4>32. 如何将产品进行多语言发布，开发？</h4>
+<div class="highlight"><pre><span class="err">国际化操作</span>
+<span class="err">在</span><span class="vg">Xcode</span><span class="err">中，</span><span class="vg">Project</span><span class="err">里，找到</span><span class="vg">Localization</span><span class="err">，点击</span><span class="o">+</span><span class="err">号，添加想要支持的语言</span>
+<span class="err">通过新建</span><span class="vg">Strings</span><span class="err">文件，把文件进行国际化处理。</span><span class="w"> </span><span class="err">通过键值对的形式，同一个</span><span class="vg">key</span><span class="err">在不同的国际化</span>
+<span class="err">文件中，对应不同的值。</span>
+<span class="err">通过</span><span class="w"> </span><span class="vg">NSLocalizedStringFromTable</span><span class="w"> </span><span class="err">等方法，通过</span><span class="vg">key</span><span class="err">来自动根据</span><span class="vg">iOS</span><span class="err">设备的当前语言，</span>
+<span class="err">显示不同的字符串。</span>
+</pre></div>
+<h4>33. OC中是如何实现线程同步的？</h4>
+<div class="highlight"><pre><span class="err">@</span><span class="nl">synchronized:</span><span class="w"> </span><span class="err">添加同步锁</span>
+<span class="vg">NSLock</span><span class="err">：加锁</span>
+<span class="vg">NSCondition</span><span class="err">：加条件锁</span>
+<span class="vg">dispatch_async</span><span class="p">(</span><span class="vg">dispatch_get_main_queue</span><span class="p">(),</span><span class="w"> </span><span class="o">^</span><span class="p">{});</span><span class="w"> </span><span class="o">:</span><span class="err">异步主线程</span>
+<span class="vg">NSOperationQueue</span><span class="err">：添加线程依赖</span>
+<span class="vg">NSOperationQueue</span><span class="err">：设置最大并发数为</span><span class="il">1</span>
+</pre></div>
+<h4>34. UDP和TCP的区别是什么？</h4>
+<div class="highlight"><pre><span class="nl">1</span><span class="o">.</span><span class="err">基于连接与无连接；</span>
+<span class="nl">2</span><span class="o">.</span><span class="err">对系统资源的要求（</span><span class="vg">TCP</span><span class="err">较多，</span><span class="vg">UDP</span><span class="err">少）；</span>
+<span class="nl">3</span><span class="o">.</span><span class="vg">UDP</span><span class="err">程序结构较简单；</span>
+<span class="nl">4</span><span class="o">.</span><span class="err">流模式与数据报模式</span><span class="w"> </span><span class="err">；</span>
+<span class="nl">5</span><span class="o">.</span><span class="vg">TCP</span><span class="err">保证数据正确性，</span><span class="vg">UDP</span><span class="err">可能丢包，</span><span class="vg">TCP</span><span class="err">保证数据顺序，</span><span class="vg">UDP</span><span class="err">不保证</span>
+</pre></div>
+<h4>35. TCP/IP建立连接的过程？</h4>
+<div class="highlight"><pre><span class="o">-</span><span class="w"> </span><span class="err">在</span><span class="vg">TCP</span><span class="o">/</span><span class="vg">IP</span><span class="w"> </span><span class="err">协议中，</span><span class="vg">TCP</span><span class="err">协议提供可靠的连接服务，采用三次握手建立连接；</span>
+<span class="o">-</span><span class="w"> </span><span class="err">第一次握手：建立连接时，客户端发送连接请求到服务器，并进入</span><span class="vg">SYN_SEND</span><span class="err">状态，等待服务器确认；</span>
+<span class="o">-</span><span class="w"> </span><span class="err">第二次握手：服务器收到客户端连接请求，向客户端发送允许连接应答，</span>
+<span class="w">  </span><span class="err">此时服务器进入</span><span class="vg">SYN_RECV</span><span class="err">状态；</span>
+<span class="o">-</span><span class="w"> </span><span class="err">第三次握手：客户端收到服务器的允许连接应答，向服务器发送确认，客户端和服务器进入通信状态，</span>
+<span class="w">  </span><span class="err">完成三次握手。</span>
+<span class="w"> </span><span class="err">（所谓的三次握手，就是要有三次连接信息的发送、接收过程。</span>
+<span class="w">   </span><span class="vg">TCP</span><span class="err">连的建立需要进行三次连接信息的发送、接收。）</span>
+</pre></div>
+<h4>36. 编程中，保存数据有哪几种方式？</h4>
+<div class="highlight"><pre><span class="o">-</span><span class="w"> </span><span class="err">数据：</span><span class="vg">Sqlite</span><span class="err">。</span><span class="w"> </span><span class="err">操作方式分为原生的</span><span class="vg">sqlite3</span><span class="err">，</span><span class="vg">FMDB</span><span class="err">，</span><span class="vg">Coredata</span>
+<span class="o">-</span><span class="w"> </span><span class="err">归档：</span><span class="vg">Archive</span><span class="err">。</span><span class="w"> </span><span class="err">自定义类型需要注意遵循</span><span class="vg">NSCoding</span><span class="err">协议</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">Plist</span><span class="err">：就是数组或字典，写入文件后的表现形式。</span>
+<span class="o">-</span><span class="w"> </span><span class="vg">NSUserDefault</span><span class="err">：本质上就是</span><span class="vg">Plist</span><span class="err">。</span>
+<span class="o">-</span><span class="w"> </span><span class="err">写文件</span>
+<span class="o">-</span><span class="w"> </span><span class="err">上传到服务器</span>
+</pre></div>
+<h4>37. 介绍版本控制中Git与SVN。</h4>
+<div class="highlight"><pre><span class="nl">1</span><span class="err">、</span><span class="vg">Git</span><span class="err">是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。</span>
+<span class="w">    </span><span class="err">主要区别于</span><span class="vg">SVN</span><span class="err">工具的功能是</span><span class="w"> </span><span class="err">分支功能比</span><span class="vg">SVN</span><span class="err">强大。</span><span class="w"> </span><span class="err">（常用）</span>
+<span class="nl">2</span><span class="err">、</span><span class="vg">SVN</span><span class="err">是</span><span class="vg">Subversion</span><span class="err">的简称，是一个开放源代码的版本控制系统，它采用了分支管理系统，</span>
+<span class="w">   </span><span class="err">它的设计目标就是取代</span><span class="kr">CVS</span><span class="err">。</span>
+</pre></div>
+<h4>38. OC中创建线程的方法是什么？如果在主线程中执行代码，方法是什么？如果想延时执行代码，方法又是什么？</h4>
+<div class="highlight"><pre><span class="err">创建线程的方法</span>
+<span class="o">-</span> <span class="p">[</span><span class="bp">NSThread</span> <span class="nl">detachNewThreadSelector</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">toTarget</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">withObject</span><span class="p">:</span><span class="nb">nil</span><span class="p">]</span>
+<span class="o">-</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">performSelectorInBackground</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">withObject</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="o">-</span> <span class="p">[[</span><span class="bp">NSThread</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTarget</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">selector</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">object</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+<span class="p">-</span> <span class="nf">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_global_queue</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="o">^</span><span class="p">{});</span>
+<span class="o">-</span> <span class="p">[[</span><span class="bp">NSOperationQueue</span> <span class="n">new</span><span class="p">]</span> <span class="nl">addOperation</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="err">主线程中执行代码的方法</span>
+<span class="o">-</span> <span class="p">[</span><span class="nb">self</span> <span class="nl">performSelectorOnMainThread</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">withObject</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">waitUntilDone</span><span class="p">:</span><span class="nb">YES</span><span class="p">]</span>
+<span class="o">-</span> <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{});</span>
+<span class="o">-</span> <span class="p">[[</span><span class="bp">NSOperationQueue</span> <span class="n">mainQueue</span><span class="p">]</span> <span class="nl">addOperation</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
+
+<span class="err">延迟执行代码</span>
+<span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="err">睡两秒钟</span>
+<span class="bp">NSTimer</span><span class="err">启动定时器####</span>
+</pre></div>
+<h4>39. iOS中有哪些多线程方案？</h4>
+<div class="highlight"><pre><span class="err">常用的有三种</span><span class="o">:</span><span class="w"> </span><span class="vg">NSThread</span><span class="w"> </span><span class="vg">NSOperationQueue</span><span class="w"> </span><span class="vg">GCD</span><span class="err">。</span>
+<span class="w">    </span><span class="il">1</span><span class="err">、</span><span class="vg">NSThread</span><span class="w"> </span><span class="err">是这三种范式里面相对轻量级的，但也是使用起来最负责的，</span>
+<span class="w">    </span><span class="err">你需要自己管理</span><span class="vg">thread</span><span class="err">的生命周期，线程之间的同步。线程共享同一应用程序的部分内存空间，</span>
+<span class="w">    </span><span class="err">它们拥有对数据相同的访问权限。你得协调多个线程对同一数据的访问，</span>
+<span class="w">    </span><span class="err">一般做法是在访问之前加锁，这会导致一定的性能开销。</span>
+<span class="w">    </span><span class="il">2</span><span class="err">、</span><span class="vg">NSOperationQueue</span><span class="w"> </span><span class="err">以面向对象的方式封装了用户需要执行的操作，</span>
+<span class="w">    </span><span class="err">我们只要聚焦于我们需要做的事情，而不必太操心线程的管理，同步等事情，</span>
+<span class="w">    </span><span class="err">因为</span><span class="vg">NSOperation</span><span class="err">已经为我们封装了这些事情。</span><span class="w"> </span>
+<span class="w">    </span><span class="vg">NSOperation</span><span class="w"> </span><span class="err">是一个抽象基类，我们必须使用它的子类。</span>
+<span class="w">    </span><span class="il">3</span><span class="err">、</span><span class="w"> </span><span class="nl">GCD:</span><span class="w"> </span><span class="vg">iOS4</span><span class="w"> </span><span class="err">才开始支持，它提供了一些新的特性，以及运行库来支持多核并行编程，</span>
+<span class="w">    </span><span class="err">它的关注点更高：如何在多个</span><span class="vg">cpu</span><span class="err">上提升效率。</span>
+
+<span class="w">    </span><span class="err">总结：</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="vg">NSThread</span><span class="err">是早期的多线程解决方案，实际上是把</span><span class="vg">C</span><span class="err">语言的</span><span class="vg">PThread</span><span class="err">线程管理代码封装成</span><span class="vg">OC</span><span class="err">代码。</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="vg">GCD</span><span class="err">是取代</span><span class="vg">NSThread</span><span class="err">的多线程技术，</span><span class="vg">C</span><span class="err">语法</span><span class="o">+</span><span class="vg">block</span><span class="err">。功能强大。</span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="vg">NSOperationQueue</span><span class="err">是把</span><span class="vg">GCD</span><span class="err">封装为</span><span class="vg">OC</span><span class="err">语法，额外比</span><span class="vg">GCD</span><span class="err">增加了几项新功能。</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="err">最大线程并发数</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="err">取消队列中的任务</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="err">暂停队列中的任务</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="err">可以调整队列中的任务执行顺序，通过优先级</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="err">线程依赖</span>
+<span class="w">        </span><span class="o">*</span><span class="w"> </span><span class="vg">NSOperationQueue</span><span class="err">支持</span><span class="vg">KVO</span><span class="err">。</span><span class="w"> </span><span class="err">这就意味着你可以观察任务的状态属性。</span>
+<span class="w">    </span><span class="err">但是</span><span class="vg">NSOperationQueue</span><span class="err">的执行效率没有</span><span class="vg">GCD</span><span class="err">高，所以一半情况下，我们使用</span><span class="vg">GCD</span><span class="err">来完成多线程操作。</span>
+</pre></div>
+<h4>40. 线程与进程的区别和联系?</h4>
+<div class="highlight"><pre><span class="nl">1</span><span class="o">.</span><span class="err">什么是进程</span><span class="w"> </span>
+<span class="err">进程是指在系统中正在运行的一个应用程序</span>
+<span class="err">每个进程之间是独立的，每个进程均运行在其专用且受保护的内存空间内</span>
+
+<span class="nl">2</span><span class="o">.</span><span class="err">什么是线程</span>
+<span class="nl">1</span><span class="err">个进程要想执行任务，必须得有线程（每</span><span class="il">1</span><span class="err">个进程至少要有</span><span class="il">1</span><span class="err">条线程）</span>
+<span class="err">线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。</span><span class="w">  </span>
+</pre></div>
+<p>[^PointSyntax]: 点语法: &quot;self.属性 = obj&quot; 调用属性的setter方法。&quot;self.属性&quot; 调用属性的getter方法区别在于是否有等号</p>
+
+			          	</article>
+			        </div>
+					</div>
+	      </body>
+	    </html>
+			<script type="text/javascript" src="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/js/jquery-1.4.4.min.js"></script>
+			<script type="text/javascript" src="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/js/jquery.ztree.all-3.5.min.js"></script>
+			<script type="text/javascript" src="/Library/Ruby/Gems/2.0.0/gems/tocmd-0.4.1/vendor/toc/js/ztree_toc.js"></script>
+			<SCRIPT type="text/javascript" >
+			<!--
+			$(document).ready(function(){
+				$('#tree').ztree_toc({
+					is_auto_number:true,
+					documment_selector:'.markdown-body'
+				});
+			});
+			//-->
+			</SCRIPT>
+	  

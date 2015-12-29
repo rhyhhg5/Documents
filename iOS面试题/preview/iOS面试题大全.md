@@ -1,6 +1,8 @@
+
+
 # iOS面试题 2016版
 
- `2015-12-28 达内纪老师` [GitHub](https://github.com/jiyingxin/Documents/tree/master/iOS面试题)，[CSDN博客](http://blog.csdn.net/jiyingxin)
+### 2015-12-28 达内纪老师 [GitHub](https://github.com/jiyingxin/Documents/tree/master/iOS面试题)，[CSDN博客](http://blog.csdn.net/jiyingxin)
 
 ![](http://7xpk73.com1.z0.glb.clouddn.com/8fb0f6bfd7bd50e285535532d4b45255.jpg)
 
@@ -9,31 +11,24 @@
 	所以整理了常见的面试题，对答案重新进行了筛选整理。
 	如果答案有错漏或者更好的答案，希望大家能够在GitHub或者CSDN通知我。
 	此文档将会持续更新。GitHub会优先更新。
-	
-	
-<link rel="stylesheet" href="/path/to/styles/default.css">
-<script src="/path/to/highlight.pack.js"></script>
-<script>hljs.initHighlightingOnLoad();</script>
-
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  
+<!--<script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  
 <script type="text/javascript">
-$(document).ready(function(){
-  $("h2,h4,h5,h6").each(function(i,item){
-    var tag = $(item).get(0).localName;
-    $(item).attr("id","wow"+i);
-    $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-    $(".newh2").css("margin-left",0);
-    $(".newh3").css("margin-left",20);
-    $(".newh4").css("margin-left",40);
-    $(".newh5").css("margin-left",60);
-    $(".newh6").css("margin-left",80);
-  });
-});
+ $(document).ready(function(){
+      $("h2,h4,h5,h6").each(function(i,item){
+        var tag = $(item).get(0).localName;
+        $(item).attr("id","wow"+i);
+        $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+        $(".newh2").css("margin-left",0);
+        $(".newh3").css("margin-left",20);
+        $(".newh4").css("margin-left",40);
+        $(".newh5").css("margin-left",60);
+        $(".newh6").css("margin-left",80);
+      });
+ });
 </script>
-<div id="category"></div>
-
-
+<div id="category"></div>-->
 	
 #### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
 
@@ -498,7 +493,6 @@ self.age = newAge;
 
 	1、Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 		主要区别于SVN工具的功能是 分支功能比SVN强大。 （常用）
-		
 	2、SVN是Subversion的简称，是一个开放源代码的版本控制系统，它采用了分支管理系统，
 	   它的设计目标就是取代CVS。
 
@@ -523,17 +517,14 @@ self.age = newAge;
 #### 39. iOS中有哪些多线程方案？
 
 	常用的有三种: NSThread NSOperationQueue GCD。
-	
 		1、NSThread 是这三种范式里面相对轻量级的，但也是使用起来最负责的，
 		你需要自己管理thread的生命周期，线程之间的同步。线程共享同一应用程序的部分内存空间，
 		它们拥有对数据相同的访问权限。你得协调多个线程对同一数据的访问，
 		一般做法是在访问之前加锁，这会导致一定的性能开销。
-		
 		2、NSOperationQueue 以面向对象的方式封装了用户需要执行的操作，
 		我们只要聚焦于我们需要做的事情，而不必太操心线程的管理，同步等事情，
 		因为NSOperation已经为我们封装了这些事情。 
 		NSOperation 是一个抽象基类，我们必须使用它的子类。
-		
 		3、 GCD: iOS4 才开始支持，它提供了一些新的特性，以及运行库来支持多核并行编程，
 		它的关注点更高：如何在多个cpu上提升效率。
 		
@@ -557,16 +548,7 @@ self.age = newAge;
 	
 	2.什么是线程
 	1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）
-	线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
-
-<pre><code class="html">
-- (SearchPoetryViewModel *)searchPoetryVM{
-    if (!_searchPoetryVM) {
-        _searchPoetryVM = [SearchPoetryViewModel new];
-    }
-    return _searchPoetryVM;
-}
-</code></pre>	
+	线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。	
 
 [^PointSyntax]: 点语法: "self.属性 = obj" 调用属性的setter方法。"self.属性" 调用属性的getter方法区别在于是否有等号
 
