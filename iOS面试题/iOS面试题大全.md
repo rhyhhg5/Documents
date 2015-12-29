@@ -1,6 +1,15 @@
 # iOS面试题大全
 
-###### 2015-12-28 达内纪老师
+###### 2015-12-28 达内纪老师 [GitHub](https://github.com/jiyingxin/Documents/tree/master/iOS面试题)，[CSDN博客](http://blog.csdn.net/jiyingxin)
+
+![](http://7xpk73.com1.z0.glb.clouddn.com/8fb0f6bfd7bd50e285535532d4b45255.jpg)
+
+	说明：
+	最近为达内学员整理面试题。发现网上的面试题和答案基本都是抄来抄去的，甚至很多答案都是错误的。
+	所以整理了常见的面试题，对答案重新进行了筛选整理。
+	如果答案有错漏或者更好的答案，希望大家能够在GitHub或者CSDN通知我。
+	此文档将会持续更新。GitHub会优先更新。
+
 
 ##### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
 
