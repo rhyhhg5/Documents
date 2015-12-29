@@ -450,6 +450,7 @@ self.age = newAge;
 	9. viewDidAppear：视图控制器的view已经展现到window上
 	10. viewWillDisappear：视图控制器的view将要从window上消失
 	11. viewDidDisappear：视图控制器的view已经从window上消失
+	12. dealloc:视图控制器对象被释放.
 	
 
 #### 32. 如何将产品进行多语言发布，开发？
@@ -488,7 +489,7 @@ self.age = newAge;
 
 #### 36. 编程中，保存数据有哪几种方式？
 
-	1. 数据：Sqlite。 操作方式分为原生的sqlite3，FMDB，Coredata
+	1. 数据库：Sqlite。 操作方式分为原生的sqlite3，FMDB，Coredata
 	2. 归档：Archive。 自定义类型需要注意遵循NSCoding协议
 	3. Plist：就是数组或字典，写入文件后的表现形式。
 	4. NSUserDefault：本质上就是Plist。
@@ -628,7 +629,7 @@ self.age = newAge;
 	而 assign 的“设置方法”只会执行针对“纯量类型” 
 	(scalar type，例如 CGFloat 或 NSlnteger 等)的简单赋值操作。
 	
-	2）assigin 可以用非OC对象,而weak必须用于OC对象
+	2）assign 可以用非OC对象,而weak必须用于OC对象
 
 #### 46.怎么用 copy 关键字？
 
@@ -653,7 +654,7 @@ self.age = newAge;
 #### 48. @synthesize和@dynamic分别有什么作用？
 
 	1）@property有两个对应的词，一个是@synthesize，一个是@dynamic。
-	如果@synthesize和@dynamic都没写，那么默认的就是@syntheszie var = _var;
+	如果@synthesize和@dynamic都没写，那么默认的就是@synthesize var = _var;
 	
 	2）@synthesize的语义是如果你没有手动实现setter方法和getter方法，
 	那么编译器会自动为你加上这两个方法。
