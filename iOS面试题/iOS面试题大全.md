@@ -9,25 +9,23 @@
 	所以整理了常见的面试题，对答案重新进行了筛选整理。
 	如果答案有错漏或者更好的答案，希望大家能够在GitHub或者CSDN通知我。
 	此文档将会持续更新。GitHub会优先更新。
-	
-	
-<link rel="stylesheet" href="/path/to/styles/default.css">
-<script src="/path/to/highlight.pack.js"></script>
+
+<link rel="stylesheet" href="http://yandex.st/highlightjs/8.0/styles/xcode.min.css">
+<script src="http://yandex.st/highlightjs/8.0/highlight.min.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
-<script src="http://yandex.st/highlightjs/6.2/highlight.min.js"></script>
 <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function(){
   $("h2,h4,h5,h6").each(function(i,item){
-    var tag = $(item).get(0).localName;
-    $(item).attr("id","wow"+i);
-    $("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
-    $(".newh2").css("margin-left",0);
-    $(".newh3").css("margin-left",20);
-    $(".newh4").css("margin-left",40);
-    $(".newh5").css("margin-left",60);
-    $(".newh6").css("margin-left",80);
+	var tag = $(item).get(0).localName;
+	$(item).attr("id","wow"+i);
+	$("#category").append('<a class="new'+tag+'" href="#wow'+i+'">'+$(this).text()+'</a></br>');
+	$(".newh2").css("margin-left",0);
+	$(".newh3").css("margin-left",20);
+	$(".newh4").css("margin-left",40);
+	$(".newh5").css("margin-left",60);
+	$(".newh6").css("margin-left",80);
   });
 });
 </script>
@@ -35,7 +33,7 @@ $(document).ready(function(){
 
 
 	
-#### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
+#### 1. OC中，与`alloc`语义相反的方法是`dealloc`还是`release`？与`retain`语义相反的方法是`dealloc`还是`release`？为什么？需要与`alloc`配对使用的方法是`dealloc`还是`release`，为什么？
 
 		以下是针对MRC(手动内存释放)模式:
 		与alloc语义相反的方法是dealloc，与retain语义相反的方法是release。
@@ -63,7 +61,7 @@ $(document).ready(function(){
 			_name = name; //指向新内容
 		}
 		
-		_name = @“object”; 只是单纯的把‘_name’指针指向‘@"object"’字符串对象所在的地址，
+		_name = @"object"; 只是单纯的把‘_name’指针指向‘@"object"’字符串对象所在的地址，
 		没有调用方法。
 
 `点语法`[^PointSyntax]
@@ -87,7 +85,7 @@ self.age = newAge;
    [person release];  
 
 	   Person *person = [[Person alloc] init];  =1
-	   [person retain];  +1    = 2
+	   [person retain];  +1	= 2
 	   [person release];  -1   = 1
 	   [person release];  -1   = 0
 	   
@@ -100,21 +98,23 @@ self.age = newAge;
 
 #### 5. 这段代码有什么问题，如何修改？  
    >for(int i = 0; i < someLargeNumber; i++){  
-	 NSString *string = @“Abc”;  
+	 NSString *string = @"Abc";  
 	string = [string lowercaseString];  
-	string = [string stringByAppendingString:@“xyz”];  
-	NSLog(@“%@“, string);  
+	string = [string stringByAppendingString:@"xyz"];  
+	NSLog(@"%@", string);  
    }  
 
 	代码本身不会报错。
 	但是猜测出题者的意思是要循环添加为 abcxyzxyzxyz.....这样的形式。
 	如果是想在Abc后面拼接多个xyz字符串的话，
-	则需要把"NSString *string = @“Abc”;" 这行代码放在循环语句外面。
+	则需要把 
+	NSString *string = @"Abc";
+	这行代码放在循环语句外面。
 
 #### 6. 简要叙述面向对象的特点，特别是多态。
 
 	1. 封装
-	封装是对象和类概念的主要特性。它是隐藏内部实现，提供外部接口，可以看作是“包装”。 
+	封装是对象和类概念的主要特性。它是隐藏内部实现，提供外部接口，可以看作是"包装"。 
 	封装，也就是把客观事物封装成抽象的类，并且类可以把自己的数据和方法只让可信的类或者对象操作，
 	对不可信的进行信息隐藏。
 	封装的目的是增强安全性和简化编程，使用者不必了解具体的实现细节，而只是要通过外部接口，
@@ -122,12 +122,12 @@ self.age = newAge;
 	好处：可以隐藏内部实现细节。通过大量功能类封装，加快后期开发速度。
 	
 	2. 继承
-	面向对象编程 (OOP) 语言的一个主要功能就是“继承”。
+	面向对象编程 (OOP) 语言的一个主要功能就是"继承"。
 	继承是指这样一种能力：它可以使用现有类的所有功能，并在无需重新编写原来的类的情况下
 	对这些功能进行扩展。
-	通过继承创建的新类称为“子类”或“派生类”，被继承的类称为“基类”、“父类”或“超类”。
+	通过继承创建的新类称为"子类"或"派生类"，被继承的类称为"基类"、"父类"或"超类"。
 	继承的过程，就是从一般到特殊的过程。在考虑使用继承时，有一点需要注意，
-	那就是两个类之间的关系应该是“属于”关系。
+	那就是两个类之间的关系应该是"属于"关系。
 	例如，Employee(雇员)是一个人，Manager(领导)也是一个人，因此这两个类都可以继承Person类。
 	但是 Leg(腿) 类却不能继承 Person 类，因为腿并不是一个人。
 	
@@ -148,14 +148,14 @@ self.age = newAge;
 	总结：封装可以隐藏实现细节，使得代码模块化；继承可以扩展已存在的代码模块（类）；
 	它们的目的都是为了——代码重用。
 	而多态则是为了实现另一个目的——接口重用！
-	多态的作用，就是为了类在继承和派生的时候，保证使用“家谱”中任一类的实例的某一属性时的正确调用。
+	多态的作用，就是为了类在继承和派生的时候，保证使用"家谱"中任一类的实例的某一属性时的正确调用。
 	在类层次中，子类只继承一个父类的数据结构和方法，则称为单重继承。 
 	在类层次中，子类继承了多个父类的数据结构和方法，则称为多重继承。 
 
 #### 7. objective-c 所有对象间的交互是如何实现的？
 
 	在对象间交互中每个对象承担的角色不同，
-	但总的来说无非就是”数据的发送者”或”数据的接收者”两种角色。
+	但总的来说无非就是"数据的发送者"或"数据的接收者"两种角色。
 	消息的正向传递比较简单，直接拿到接受者的指针即可。
 	消息的反响传递可以通过委托模式，观察者模式(本质是单例模式)，block语法，AppDelegagte来实现。
 	其中委托模式，block语法都是1对1的消息传递。 观察者模式是1对多。
@@ -176,10 +176,11 @@ self.age = newAge;
 
 #### 10. #import和#include有什么区别？@class呢？#import<>和#import""有什么区别？
 
+	
 	#import是Objective-C导入头文件的关键字，#include是C/C++导入头文件的关键字,
 	使用#import头文件会自动只导入一次，不会重复导入，相当于#include和#pragma once;
 	@class告诉编译器某个类的声明，当执行时，才去查看类的实现文件，可以解决头文件的相互包含;
-	#import<>用来包含系统的头文件，#import””用来包含用户头文件。
+	#import<>用来包含系统的头文件，#import""用来包含用户头文件。
 	例如：
 	
 	/* 如果这里不写@class，则报错。 原因是找不到MyVC的定义。因为代码执行顺序是由上至下的。
@@ -241,7 +242,7 @@ self.age = newAge;
 	NSInteger类型的定义是
 	
 	#if __LP64__ || (TARGET_OS_EMBEDDED && !TARGET_OS_IPHONE) 
-	|| TARGET_OS_WIN32 	|| NS_BUILD_32_LIKE_64
+	|| TARGET_OS_WIN32	 || NS_BUILD_32_LIKE_64
 	typedef long NSInteger;
 	typedef unsigned long NSUInteger;
 	#else	
@@ -260,7 +261,7 @@ self.age = newAge;
 	- (id)initWithName:(NSString *)name;
 	id obj = [NSObject new];
 	
-	现在我们使用苹果推荐使用的“instancetype”类型代替id类型作为返回值
+	现在我们使用苹果推荐使用的"instancetype"类型代替id类型作为返回值
 	- (instancetype)initWithName:(NSString *)name;
 
 	instancetype和id的区别在于， id可以声明对象 也可以作为返回值，
@@ -315,22 +316,22 @@ self.age = newAge;
 	Category可以向类中添加新的方法，或者重写已有方法。
 	正常情况下不可以添加属性。但是实际应用中可以通过runtime机制添加属性。
 	类别主要有3个作用：
-	- 将类的实现分散到多个不同文件或多个不同框架中。降低耦合性。
-	- 重写主类方法
-	- 向类中添加协议，属性，方法。
+	a. 将类的实现分散到多个不同文件或多个不同框架中。降低耦合性。
+	b. 重写主类方法
+	c. 向类中添加协议，属性，方法。
 	
 	继承主要作用：
-	- 重写父类方法
-	- 在父类基础上增加属性，方法，协议
+	a. 重写父类方法
+	b. 在父类基础上增加属性，方法，协议
 	
 	区别：继承使用时，需要使用子类。 Category使用时只需要引入头文件。
 
 #### 22. 我们说的OC是动态运行时语言是什么意思？
 
-	`编译时`等价于`编码时`, `编码时`就是程序员写的代码的样子. 程序员为一个类编写代码, 
-	便可以为一个类添加 “成员变量(实例变量)” . 程序员也可以在一个类中写一些函数, 被称作“方法”.
+	'编译时'等价于'编码时', '编码时'就是程序员写的代码的样子. 程序员为一个类编写代码, 
+	便可以为一个类添加 "成员变量(实例变量)" . 程序员也可以在一个类中写一些函数, 被称作"方法".
 	 运行前编译, 编译器会把程序员写的代码编译成可执行文件, 里面便有之前写的类的信息, 
-	 包括`实例变量`和`方法`, 这些信息并不能组成一个实际的数据类型. 
+	 包括'实例变量'和'方法', 这些信息并不能组成一个实际的数据类型. 
 	 程序运行后, 会将这些信息拼凑成一个结构体, 这个结构体便是一个数据类型. 
 	 同时, 在运行期间, 数据类型可以改变, 表现为:
 		
@@ -395,16 +396,16 @@ self.age = newAge;
 	- (void)observeValueForKeyPath:(NSString *)keyPath 
 							 ofObject:(id)object 
 								 change:(NSDictionary *)change 
-								context:(void *)context
+								context:(void *)context{}
 
 #### 26. 设计模式是什么？你知道哪些设计模式，并简要叙述。
 
-	- 单例模式：通过static关键词，声明全局变量。在整个进程运行期间只会被赋值一次。
-	- 观察者模式：KVO是典型的通知模式，观察某个属性的状态，状态发生变化时通知观察者。
-	- 委托模式：代理+协议的组合。实现1对1的反相传值操作。
-	- 工厂模式：通过一个类方法，批量的根据已有模板生产对象。
-	- MVC模式：Model View Control， 把模型 视图 控制器 层进行解耦合编写。
-	- MVVM模式：Model View ViewModel 把 模型 视图 业务逻辑 层进行解耦合编写。
+	a. 单例模式：通过static关键词，声明全局变量。在整个进程运行期间只会被赋值一次。
+	b. 观察者模式：KVO是典型的通知模式，观察某个属性的状态，状态发生变化时通知观察者。
+	c. 委托模式：代理+协议的组合。实现1对1的反相传值操作。
+	d. 工厂模式：通过一个类方法，批量的根据已有模板生产对象。
+	e. MVC模式：Model View Control， 把模型 视图 控制器 层进行解耦合编写。
+	f. MVVM模式：Model View ViewModel 把 模型 视图 业务逻辑 层进行解耦合编写。
 
 #### 27. 描述一下iOS SDK中如何实现MVC的开发模式。
 
@@ -416,19 +417,19 @@ self.age = newAge;
 
 #### 28. ViewController的didReceiveMemoryWarning是在什么时候调用的？默认的操作是什么？
 
-		当系统内存不足时，首先UIViewController的didReceiveMemoryWarining方法会被调用。
-		默认操作如果当前控制器不是window的根视图控制器，会自动将self.view释放。  
+	当系统内存不足时，首先UIViewController的didReceiveMemoryWarining方法会被调用。
+	默认操作如果当前控制器不是window的根视图控制器，会自动将self.view释放。  
 
 #### 29. delegate和Block的区别？
 
 	delegate：
-	- 需要定义协议方法并且实现协议方法，会使代码结构变复杂
-	- 效率没有block高
+	a. 需要定义协议方法并且实现协议方法，会使代码结构变复杂
+	b. 效率没有block高
 	
 	block：
-	- 代码结构更加紧凑，不需要额外定义方法。
-	- 需要注意防止循环引用，使用__weak 关键词修饰
-	- 当需要在块中修改外部变量时，需要对外部变量使用__block 关键词修饰
+	a. 代码结构更加紧凑，不需要额外定义方法。
+	b. 需要注意防止循环引用，使用__weak 关键词修饰
+	c. 当需要在块中修改外部变量时，需要对外部变量使用__block 关键词修饰
 
 #### 30. frame和bounds有什么不同？
 
@@ -438,17 +439,18 @@ self.age = newAge;
 #### 31.ViewController生命周期
 
 	按照执行顺序排列
- 	- initWithCoder：通过nib文件初始化时触发
-	- awakeFromNib：nib文件被加载的时候，会发送一个awakeFromNib的消息到nib文件中的每个对象
-	- loadView：开始加载视图控制器自带的view
-	- viewDidLoad：视图控制器的view被加载完成
-	- viewWillAppear：视图控制器的view将要显示在window上
-	- updateViewConstraints：视图控制器的view开始更新AutoLayout约束
-	- viewWillLayoutSubviews：视图控制器的view将要更新内容视图的位置
-	- viewDidLayoutSubviews：视图控制器的view已经更新视图的位置
-	- viewDidAppear：视图控制器的view已经展现到window上
-	- viewWillDisappear：视图控制器的view将要从window上消失
-	- viewDidDisappear：视图控制器的view已经从window上消失
+	1. initWithCoder：通过nib文件初始化时触发
+	2. awakeFromNib：nib文件被加载的时候，会发送一个awakeFromNib的消息到nib文件中的每个对象
+	3. loadView：开始加载视图控制器自带的view
+	4. viewDidLoad：视图控制器的view被加载完成
+	5. viewWillAppear：视图控制器的view将要显示在window上
+	6. updateViewConstraints：视图控制器的view开始更新AutoLayout约束
+	7. viewWillLayoutSubviews：视图控制器的view将要更新内容视图的位置
+	8. viewDidLayoutSubviews：视图控制器的view已经更新视图的位置
+	9. viewDidAppear：视图控制器的view已经展现到window上
+	10. viewWillDisappear：视图控制器的view将要从window上消失
+	11. viewDidDisappear：视图控制器的view已经从window上消失
+	
 
 #### 32. 如何将产品进行多语言发布，开发？
 
@@ -460,7 +462,7 @@ self.age = newAge;
 	显示不同的字符串。
 
 #### 33. OC中是如何实现线程同步的？
-	@synchronized: 添加同步锁
+	@synchronized(){}: 添加同步锁
 	NSLock：加锁
 	NSCondition：加条件锁
 	dispatch_async(dispatch_get_main_queue(), ^{}); :异步主线程
@@ -468,38 +470,37 @@ self.age = newAge;
 	NSOperationQueue：设置最大并发数为1
 
 #### 34. UDP和TCP的区别是什么？
-	1.基于连接与无连接；
-	2.对系统资源的要求（TCP较多，UDP少）；
-	3.UDP程序结构较简单；
-	4.流模式与数据报模式 ；
-	5.TCP保证数据正确性，UDP可能丢包，TCP保证数据顺序，UDP不保证
+	1. 基于连接与无连接；
+	2. 对系统资源的要求（TCP较多，UDP少）；
+	3. UDP程序结构较简单；
+	4. 流模式与数据报模式 ；
+	5. TCP保证数据正确性，UDP可能丢包，TCP保证数据顺序，UDP不保证
 
 #### 35. TCP/IP建立连接的过程？
 
-	- 在TCP/IP 协议中，TCP协议提供可靠的连接服务，采用三次握手建立连接；
-	- 第一次握手：建立连接时，客户端发送连接请求到服务器，并进入SYN_SEND状态，等待服务器确认；
-	- 第二次握手：服务器收到客户端连接请求，向客户端发送允许连接应答，
+	1. 在TCP/IP 协议中，TCP协议提供可靠的连接服务，采用三次握手建立连接；
+	2. 第一次握手：建立连接时，客户端发送连接请求到服务器，并进入SYN_SEND状态，等待服务器确认；
+	3. 第二次握手：服务器收到客户端连接请求，向客户端发送允许连接应答，
 	  此时服务器进入SYN_RECV状态；
-	- 第三次握手：客户端收到服务器的允许连接应答，向服务器发送确认，客户端和服务器进入通信状态，
+	4. 第三次握手：客户端收到服务器的允许连接应答，向服务器发送确认，客户端和服务器进入通信状态，
 	  完成三次握手。
-	 （所谓的三次握手，就是要有三次连接信息的发送、接收过程。
-	   TCP连的建立需要进行三次连接信息的发送、接收。）
+	 （所谓的三次握手，就是要有三次连接信息的发送、接收过程。TCP连的建立需要进行三次连接信息的发送、接收。）
 
 #### 36. 编程中，保存数据有哪几种方式？
 
-	- 数据：Sqlite。 操作方式分为原生的sqlite3，FMDB，Coredata
-	- 归档：Archive。 自定义类型需要注意遵循NSCoding协议
-	- Plist：就是数组或字典，写入文件后的表现形式。
-	- NSUserDefault：本质上就是Plist。
-	- 写文件
-	- 上传到服务器
+	1. 数据：Sqlite。 操作方式分为原生的sqlite3，FMDB，Coredata
+	2. 归档：Archive。 自定义类型需要注意遵循NSCoding协议
+	3. Plist：就是数组或字典，写入文件后的表现形式。
+	4. NSUserDefault：本质上就是Plist。
+	5. 写文件
+	6. 上传到服务器
 
 #### 37. 介绍版本控制中Git与SVN。
 
-	1、Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
+	1. Git是一款免费、开源的分布式版本控制系统，用于敏捷高效地处理任何或小或大的项目。
 		主要区别于SVN工具的功能是 分支功能比SVN强大。 （常用）
 		
-	2、SVN是Subversion的简称，是一个开放源代码的版本控制系统，它采用了分支管理系统，
+	2. SVN是Subversion的简称，是一个开放源代码的版本控制系统，它采用了分支管理系统，
 	   它的设计目标就是取代CVS。
 
 #### 38. OC中创建线程的方法是什么？如果在主线程中执行代码，方法是什么？如果想延时执行代码，方法又是什么？
@@ -559,14 +560,7 @@ self.age = newAge;
 	1个进程要想执行任务，必须得有线程（每1个进程至少要有1条线程）
 	线程是进程的基本执行单元，一个进程（程序）的所有任务都在线程中执行。
 
-<pre><code class="html">
-- (SearchPoetryViewModel *)searchPoetryVM{
-    if (!_searchPoetryVM) {
-        _searchPoetryVM = [SearchPoetryViewModel new];
-    }
-    return _searchPoetryVM;
-}
-</code></pre>	
+
 
 [^PointSyntax]: 点语法: "self.属性 = obj" 调用属性的setter方法。"self.属性" 调用属性的getter方法区别在于是否有等号
 
